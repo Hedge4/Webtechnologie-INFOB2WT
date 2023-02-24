@@ -3,61 +3,79 @@ body {
 }
 
 #site_box {
-  width: 70%;
-  margin: 0 auto 0 auto;
   padding-bottom: 40px;
 }
 
-#menubar {
-  height: 50px;
-  padding: 0 6px;
-  padding-top: 0;
+#header,
+#site_content,
+#footer {
+  width: 70%;
+  margin: 0 auto 0 auto;
 }
 
-ul#menu {
+#menubar {
+  padding: 0 6px;
+  padding-top: 0;
+  overflow: auto;
+}
+
+#menu {
   float: right;
   padding: 4px 10px;
   padding-top: 0;
   margin: 0px;
-  background-color: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
   border-top: none;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 15px 15px;
+  box-shadow: inset rgba(0, 0, 0, 0.5) 0px -10px 20px;
 }
 
-ul#menu li {
+#menu li {
   list-style: none;
   float: left;
+  padding-top: 5px;
 }
 
-ul#menu li a {
+#menu li a {
   display: block;
   text-align: center;
   color: #fff;
   height: 20px;
-  padding: 10px 15px;
+  padding: 5px 15px 14px 15px;
   font-size: 125%;
-  letter-spacing: 0.2en;
+  letter-spacing: 2px;
   border: none;
+  border-radius: 30px;
   text-decoration: none;
+  transition: all 0.5s;
 }
 
-ul#menu li.selected a,
-ul#menu li a:hover {
+#menu li.selected a,
+#menu li a:focus,
+#menu li a:hover {
   color: #10D6EF;
+  text-shadow: 1px 1px 2px black;
+}
+
+#menu li a:focus,
+#menu li a:hover {
+  box-shadow: inset rgba(0, 0, 0, 0.5) 0px -10px 20px;
+  transform: translateY(-3px);
 }
 
 #title_box {
-  padding-top: 1em;
+  padding-top: 3em;
   padding-bottom: 2em;
 }
 
 #title_box h1 {
+  font-family: kalam, cursive;
+  font-size: 36pt;
+  padding-left: 1em;
   margin: 0;
-  padding-left: 2em;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 38px;
+  text-shadow: 1px 1px 2px white;
 }
 
 #site_content {
@@ -82,21 +100,4 @@ ul#menu li a:hover {
   flex: 0 0 30%;
   padding: 0 0 0 15px;
   border-left: 1px solid rgb(187, 187, 187);
-}
-
-/* in portrait mode, display #sidebar below #content */
-@media (orientation: portrait) {
-  #site_content {
-    flex-wrap: wrap;
-  }
-
-  #content {
-    padding: 0;
-  }
-
-  #sidebar {
-    padding: 0;
-    border: none;
-    flex-grow: 1;
-  }
 }
