@@ -1,0 +1,40 @@
+.review_table {
+  width: 50%;
+  border: 2px solid black;
+}
+
+.review_table th {
+  width: 10%;
+  border: 1px solid black;
+}
+
+.review_table td {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 10%;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.speech_bubble {
+  margin: 20px;
+  border-radius: 20px;
+  padding: 10px;
+  color: white;
+  position: relative;
+  width: 80%;
+  height: 10%px;
+  background-color: black;
+}
+
+.review_wrapper {
+  display: flex;
+  width: 80%;
+}
+
+.review_wrapper--left {
+  padding-bottom: 10%;
+}
+
+.review_wrapper--right {
+  padding-top: 10%;
+}
