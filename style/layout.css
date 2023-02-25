@@ -4,7 +4,6 @@ body {
 
 #site_box {
   width: 100%;
-  padding-bottom: 40px;
 }
 
 #header,
@@ -82,6 +81,7 @@ body {
 #site_content {
   overflow: hidden;
   padding: 10px 20px;
+  margin-bottom: 40px;
   background: rgb(245, 245, 230);
   opacity: 0.8;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 20px 30px, inset rgba(0, 0, 0, 0.5) 0px -10px 20px;
@@ -101,4 +101,52 @@ body {
   flex: 0 0 30%;
   padding: 0 0 0 15px;
   border-left: 1px solid rgb(187, 187, 187);
+}
+
+#footer {
+  display: flex;
+  width: 100vw;
+  height: 30vh;
+  background-color: rgb(24, 23, 23);
+  color: whitesmoke;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.footer__image {
+  height: 100%;
+}
+
+.footer__list__title {
+  font-size: 1.8rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 100%;
+  margin-top: 5%;
+  padding: 0;
+}
+
+.footer__list__item {
+  width: 100%;
+  margin: .8rem;
+}
+
+.footer__list__item a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: inherit;
+}
+
+.cast-member {
+  display: flex;
+}
+
+.cast-member__img {
+  max-width: 15%;
+  margin: 10px;
+  border-radius: 20px;
 }
