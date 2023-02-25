@@ -1,0 +1,22 @@
+#cast>h1 {
+    margin-top: 1em;
+    border-bottom: 1px solid grey;
+}
+
+#cast>h2 {
+    margin-bottom: 0.2em;
+}
+
+#cast>p {
+    margin: 0.2em 0;
+}
+
+.cast_member {
+    display: flex;
+}
+
+.cast_member__img {
+    max-width: 15%;
+    margin: 10px;
+    border-radius: 20px;
+}
