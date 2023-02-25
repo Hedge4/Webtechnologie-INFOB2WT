@@ -43,4 +43,20 @@
         border-top: 1px solid rgb(187, 187, 187);
         flex-grow: 1;
     }
+
+    footer #footer__wrapper>* {
+        margin-inline: 0.5em;
+        padding-top: 0.5em;
+        justify-content: space-between;
+    }
+
+    #footer__wrapper>img {
+        margin-left: 0;
+        padding-top: 0;
+        height: 20vh;
+    }
+
+    footer #footer__wrapper>*:last-child {
+        margin-bottom: 0.5em;
+    }
 }

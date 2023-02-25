@@ -141,6 +141,7 @@ footer {
   width: 100%;
   margin: 0 0 0.6em 0;
   font-size: medium;
+  border: none;
 }
 
 .footer__list ul {
