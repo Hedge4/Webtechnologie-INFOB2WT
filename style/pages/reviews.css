@@ -1,18 +1,21 @@
 .review_table {
-  width: 50%;
   border: 2px solid black;
+  margin-bottom: 1em;
 }
 
 .review_table th {
-  width: 10%;
   border: 1px solid black;
 }
 
 .review_table td {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 10%;
   border: 1px solid black;
   padding: 5px;
+}
+
+.review_table td>*:last-child {
+  margin-block: 0;
+  margin-right: 1.5em;
 }
 
 .speech_bubble {
