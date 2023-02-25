@@ -3,6 +3,12 @@ body {
   margin: 0;
 }
 
+h1 {
+  padding-bottom: 0.1em;
+  border-bottom: 1px solid grey;
+  margin-top: 0.2em;
+}
+
 h2 {
   padding-left: 0.5em;
 }
@@ -20,5 +26,3 @@ a:focus {
   text-decoration: underline;
   transition: all 1s;
 }
-
-
