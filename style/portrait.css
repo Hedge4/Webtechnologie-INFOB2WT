@@ -1,7 +1,6 @@
 @media (orientation: portrait) {
 
-    #header,
-    #footer {
+    #header {
         width: 100%;
     }
 

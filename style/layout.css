@@ -7,8 +7,7 @@ body {
 }
 
 #header,
-#site_content,
-#footer {
+#site_content {
   width: 70%;
   margin: 0 auto 0 auto;
 }
@@ -103,50 +102,66 @@ body {
   border-left: 1px solid rgb(187, 187, 187);
 }
 
-#footer {
-  display: flex;
-  width: 100vw;
-  height: 30vh;
-  background-color: rgb(24, 23, 23);
+footer {
+  width: 100%;
+  min-height: 30vh;
+  background-color: rgb(28, 26, 26);
   color: whitesmoke;
 }
 
-.footer__wrapper {
+#footer__wrapper {
   display: flex;
-  justify-content: space-around;
-  width: 70%;
+  flex-wrap: wrap;
+  min-width: 75%;
+  max-width: 90%;
 }
 
-.footer__image {
-  height: 100%;
+#footer__wrapper>* {
+  padding-top: 1.5em;
+  margin-inline: 2.5em;
 }
 
-.footer__list__title {
+#footer__wrapper img {
+  padding-top: 0;
+  margin-left: 0;
+  height: 30vh;
+}
+
+#footer__wrapper>*>* {
+  margin: 0;
+  font-size: small;
+}
+
+#footer__wrapper>*>h1 {
   font-size: 1.8rem;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   width: 100%;
-  margin-top: 5%;
-  padding: 0;
+  margin: 0 0 0.6em 0;
+  font-size: medium;
 }
 
-.footer__list__item {
-  width: 100%;
-  margin: .8rem;
+.footer__list ul {
+  padding-left: 18px;
+  margin: 0;
 }
 
-.footer__list__item a {
+.footer__list ul li {
+  margin: 0.3rem 0;
+}
+
+.footer__list ul li a {
   text-decoration: none;
-  font-size: 1.1rem;
+  color: rgb(200, 170, 148);
+}
+
+footer .footer__list ul li a.selected {
+  text-decoration: underline;
+  color: rgb(65, 154, 172);
   font-weight: bold;
-  color: inherit;
 }
 
-.cast-member {
-  display: flex;
-}
-
-.cast-member__img {
-  max-width: 15%;
-  margin: 10px;
-  border-radius: 20px;
+footer .footer__list ul li a:hover,
+footer .footer__list ul li a:focus {
+  color: rgb(65, 154, 172);
+  font-weight: bold;
 }
