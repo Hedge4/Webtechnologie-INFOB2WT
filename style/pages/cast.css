@@ -27,6 +27,10 @@
     border-bottom: 2px solid black;
 }
 
+.cast-member:last-child .cast-member__text {
+    border-bottom: none
+}
+
 .cast-member__text h2 {
     padding: 0;
 }

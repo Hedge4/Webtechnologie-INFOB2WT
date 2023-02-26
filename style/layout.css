@@ -98,13 +98,6 @@ body {
   flex-grow: 1;
 }
 
-.poster {
-  max-width: 40%;
-  margin: auto;
-  border-radius: 0px;
-  float: right;
-}
-
 .page_title {
   padding-left: 0.5em;
 }
@@ -129,7 +122,7 @@ footer {
 
 #footer__wrapper>* {
   padding-top: 1.5em;
-  margin-inline: 2.5em;
+  margin-inline: 2.2em;
 }
 
 #footer__wrapper img {

@@ -26,3 +26,11 @@ a:focus {
   text-decoration: underline;
   transition: all 1s;
 }
+
+ul {
+  list-style-type: circle;
+}
+
+ul ul {
+  list-style-type: disc;
+}
