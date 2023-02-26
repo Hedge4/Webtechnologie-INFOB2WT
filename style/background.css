@@ -17,7 +17,8 @@
 #site_box {
   position: absolute;
   top: 0px;
-  z-index: 2; 
+  min-height: 100vh;
+  min-height: 1;
 }
 
 /* image better fit for landscape mode */

@@ -10,14 +10,14 @@
     margin: 0.2em 0;
 }
 
-.cast_member {
+.cast-member {
     display: flex;
 }
 
-.cast_member__img {
+.cast-member__img {
     max-width: 15%;
     margin: auto;
-    border-radius: 20px;
+    border-radius: 50px;
 }
 
 .cast-member__text {
