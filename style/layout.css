@@ -98,6 +98,13 @@ body {
   flex-grow: 1;
 }
 
+.poster {
+  max-width: 40%;
+  margin: auto;
+  border-radius: 0px;
+  float: right;
+}
+
 .page_title {
   padding-left: 0.5em;
 }
