@@ -170,6 +170,17 @@ footer .footer__list ul li a:focus {
   font-weight: bold;
 }
 
+
+.cast-member {
+  display: flex;
+}
+
+.cast-member__img {
+  max-width: 15%;
+  margin: 10px;
+  border-radius: 20px;
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }

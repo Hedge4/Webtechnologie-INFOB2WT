@@ -16,6 +16,17 @@
 
 .cast_member__img {
     max-width: 15%;
-    margin: 10px;
+    margin: auto;
     border-radius: 20px;
+}
+
+.cast-member__text {
+    max-width: 60%;
+    font-size: 1.2rem;
+    margin: auto;
+    border-bottom: 2px solid black;
+}
+
+.cast-member__text h2 {
+    padding: 0;
 }
