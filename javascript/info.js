@@ -17,20 +17,20 @@ const actorInfoList = [
 ];
 
 const writerInfoList = [
-    { name: 'Example', wikipediaArticle: 'Example Article', birthYear: 'January 01 1900', moviesWritten: ['Movie 1', 'movie 2'] },
+    { name: 'Andrew Niccol', wikipediaArticle: 'wiki/Andrew_Niccol', birthYear: 'June 10 1964', moviesWritten: ['Gattica', 'Simone', 'in Time'] },
 ];
 
 const directorInfoList = [
-    { name: 'Example', wikipediaArticle: 'Example Article', birthYear: 'January 01 1900', moviesWritten: ['Movie 1', 'movie 2'] },
+    { name: 'Peter Weir', wikipediaArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesWritten: ['Dead Poets Society', 'The Last Wave', 'The Way Back '] },
 ];
 
 const movieInfo = {
     title: 'The Truman Show',
-    genre: 'A genre',
-    releaseYear: 'Release year',
-    poster: 'posterImageLink',
-    trailer: 'link to trailer',
-    plot: 'Plot description string',
+    genre: 'satirical social science fiction comedy-drama',
+    releaseYear: '1998',
+    poster: 'img\the-truman-show-movie-poster-md.jpg',
+    trailer: 'https://www.youtube.com/watch?v=LfXTASYB14M&ab_channel=HDRetroTrailers',
+    plot: '"The Truman Show" is a movie about a man named Truman who discovers that his entire life has been a television show, with him as the unwitting star.',
 };
 
 //////////////////////////////////
