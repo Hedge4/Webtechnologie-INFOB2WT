@@ -2,6 +2,14 @@ body {
   background: black;
 }
 
+article {
+  width: 80%;
+}
+
+section {
+  margin-top: 30px;
+}
+
 #site_box {
   width: 100%;
 }
@@ -159,7 +167,9 @@ footer {
   color: rgb(200, 170, 148);
 }
 
-footer .footer__list ul li a.selected {
+
+
+ul li a.footer-link--selected {
   text-decoration: underline;
   color: rgb(65, 154, 172);
   font-weight: bold;
@@ -289,3 +299,6 @@ footer .footer__list ul li a:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: #0006b3;
 }
+
+
+
