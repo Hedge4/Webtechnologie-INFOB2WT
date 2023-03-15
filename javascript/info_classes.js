@@ -2,9 +2,9 @@
 const startClasses = performance.now();
 
 
-/////////////////////////////////
-// DOM ELEMENT GENERATION CODE //
-/////////////////////////////////
+////////////////////////////////
+// FUNCTIONS OUR CLASSES CALL //
+////////////////////////////////
 
 /**
  * Function called by the classes defined in this file upon generation, which creates a HTML DOM element and its children with classes, attributes, and event listeners based on the given input object, ready to be added to the DOM.
@@ -91,6 +91,31 @@ function generateDomElement(options) {
     return elem;
 }
 
+/**
+ * Function called with .call() by constructors of our classes, that loads general information from wikipedia.
+ * Doesn't return anything, and just adds to the DOM element with the right id upon success.
+ */
+function loadWikipediaData() {
+    if (!this.wikipediaLink) return;
+
+    const query = encodeURI(this.wikipediaLink);
+    this.wikiLink = `https://en.wikipedia.org/w/index.php?search=${query}`;
+    const dataURL = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}&origin=*&format=json`;
+
+    // fetch our data, then add it to the DOM
+    fetch(dataURL).then(res => {
+        res.json().then(resData => {
+
+            console.log(resData);
+
+            for (const key in resData.query.pages) {
+                const element = resData.query.pages[key];
+                this.wikiData = element.extract;
+            }
+        });
+    });
+}
+
 
 ////////////////////////////////////
 // CLASSES AND GENERATION METHODS //
@@ -99,8 +124,10 @@ function generateDomElement(options) {
 // the Artist class only defines basic properties and doesn't have a generate() method
 class Artist {
     constructor(options) {
+        this.id = options.id;
         this.name = options.name;
         this.birthYear = options.birthYear;
+        this.wikipediaLink = options.wikipediaLink || undefined;
 
         if (!this.name) throw (`ConstructorError: ${this.constructor.name} must have a name!`);
         if (!this.birthYear) throw (`ConstructorError: ${this.constructor.name} must have a year of birth!`);
@@ -147,14 +174,33 @@ class Actor extends Artist {
 
         return generateDomElement({
             tagName: 'div',
-            attributes: ['style', 'border: 3px double blue; border-radius: 10px; padding: 1em; margin: 0.5em'],
             eventListeners: ['click', () => alert(`${this.name} was clicked!`)],
+            attributes: [['id', ['thing']]],
             children: [
                 {
-                    tagName: 'h3',
-                    text: this.name,
+                    tagName: 'div',
+                    classes: ['actor-info'],
+                    children: [
+                        {
+                            tagName: 'h3',
+                            text: this.name,
+                        }, {
+                            tagName: 'p',
+                            text: 'Couldn\'t find information.',
+                        },
+                    ],
                 },
-                movieList,
+                {
+                    tagName: 'div',
+                    classes: ['actor-info'],
+                    children: [
+                        {
+                            tagName: 'h4',
+                            text: 'Starred in:',
+                        },
+                        movieList,
+                    ],
+                },
             ],
         });
     }
