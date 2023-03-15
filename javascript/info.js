@@ -24,16 +24,10 @@ const movieList = [
 // MAIN CONTENT GENERATING SCRIPT //
 ////////////////////////////////////
 
-const tempActorInfoList = [
-    { name: 'Actor1', birthYear: '1465', moviesPlayed: ['skediddle', 'skoobiedoo', 'corn wars'] },
-    { name: 'Actor2', birthYear: '3643', moviesPlayed: ['corn wars', 'meth investigators'] },
-    { name: 'Actor3', birthYear: '1999', moviesPlayed: ['skoobiedoo', 'meth investigators', 'operation theft'] },
-];
-
 // create an array of Actor instances from tempActorInfoList
 const actors = [];
-for (let i = 0; i < tempActorInfoList.length; i++) {
-    const actorInfo = tempActorInfoList[i];
+for (let i = 0; i < actorInfoList.length; i++) {
+    const actorInfo = actorInfoList[i];
     actorInfo.id = `actor-${i}`;
     actors.push(new Actor(actorInfo));
 }
@@ -66,13 +60,13 @@ for (let i = 0; i < tempDirectorInfoList.length; i++) {
     directors.push(new Director(directorInfo));
 }
 
-const tempMovieObject = {
+const movie = new Movie({
     actors: actors,
     writers: writers,
     directors: directors,
-};
+});
 
-console.log(tempMovieObject);
+console.log(movie);
 
 // get the content div we need to add all of our generated elements to
 const contentDiv = document.getElementById('content');

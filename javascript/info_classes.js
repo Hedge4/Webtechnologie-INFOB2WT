@@ -175,7 +175,8 @@ class Actor extends Artist {
         return generateDomElement({
             tagName: 'div',
             eventListeners: ['click', () => alert(`${this.name} was clicked!`)],
-            attributes: [['id', ['thing']]],
+            attributes: [['id', [this.id]]],
+            classes: ['actor-box'],
             children: [
                 {
                     tagName: 'div',
@@ -186,13 +187,22 @@ class Actor extends Artist {
                             text: this.name,
                         }, {
                             tagName: 'p',
+                            classes: ['birth-year'],
+                            text: this.birthYear,
+                        }, {
+                            tagName: 'p',
                             text: 'Couldn\'t find information.',
                         },
                     ],
                 },
                 {
+                    tagName: 'img',
+                    classes: ['actor-img'],
+                    attributes: [['src', 'https://images.freeimages.com/images/previews/54c/random-photography-3-1143357.jpg']],
+                },
+                {
                     tagName: 'div',
-                    classes: ['actor-info'],
+                    classes: ['actor-movies'],
                     children: [
                         {
                             tagName: 'h4',
@@ -209,8 +219,10 @@ class Actor extends Artist {
 // eslint-disable-next-line
 class Movie {
     constructor(options) {
-        console.log(options); // temp
-        this.paramName = options.paramName;
+        // this.title = options.title;
+        this.actors = options.actors;
+        this.writers = options.writers;
+        this.directors = options.directors;
 
         // reject missing constructor params
         if (!this.paramName) throw (`${this.constructor.name} must have ...!`);
