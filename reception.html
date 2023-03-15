@@ -18,6 +18,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+  <script src="./javascript/styleMenu.js" defer></script>
 </head>
 
 <body>
@@ -134,6 +136,53 @@
             course at Utrecht University.
           </p>
         </div>
+
+        <div class="style-menu">
+          <h1>Change up the appearance!</h2>
+          <div class="style-menu__wrapper">
+            <label for="element-selector" class="style-menu__label">Select Element</label>
+            <select id="element-selector" class="style-menu__selector">
+              <option value="default">...</option>
+              <option value="body">Body</option>
+              <option value="header">Header</option>
+              <option value="article">Article</option>
+              <option value="section">Section</option>
+              <option value="footer">Footer</option>
+            </select>
+          </div>
+          
+          <div class="style-menu__wrapper">
+            <label for="attribute-selector" class="style-menu__label">Select Attribute</label>
+            <select id="attribute-selector" class="style-menu__selector">
+              <option value="default">...</option>
+              <option value="color">Text Color</option>
+              <option value="font-family">Font</option>
+              <option value="font-size">Font Size</option>
+              <option value="background-color">Color</option>
+            </select>
+          </div>
+          
+          <div class="style-menu__wrapper">
+            <span class="style-menu__label" >Options</span>
+            <div id="style-menu__arrow" class="style-menu__arrow"></div>
+            <span id="style-menu-warning" class="style-menu__warning"></span>
+          </div>
+          <div id="options-wrapper" class="style-menu__value-list">
+            <ul id="options-list">
+              <li class="style-menu__value">Red</li>
+              <li class="style-menu__value">Blue</li>
+              <li class="style-menu__value">Green</li>
+              <li class="style-menu__value">Yellow</li>
+            </ul>
+
+            <div class="style-menu__button-wrapper">
+              <button id="reset-button">Reset</button>
+              <button id="apply-button">Apply</button>
+            </div>
+          </div>
+
+
+
     </footer>
   </div>
 </body>
