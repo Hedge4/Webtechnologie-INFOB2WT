@@ -17,16 +17,16 @@ const actorInfoList = [
 ];
 
 const writerInfoList = [
-    { name: 'Andrew Niccol', wikipediaArticle: 'wiki/Andrew_Niccol', birthYear: 'June 10 1964', moviesWritten: ['Gattica', 'Simone', 'in Time'] },
+    { name: 'Andrew Niccol', wikipediaArticle: 'wiki/Andrew_Niccol', birthYear: 'June 10 1964', moviesWritten: ['Gattica', 'Simone', 'in Time'] }
 ];
 
 const directorInfoList = [
-    { name: 'Peter Weir', wikipediaArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesWritten: ['Dead Poets Society', 'The Last Wave', 'The Way Back '] },
+    { name: 'Peter Weir', wikipediaArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesWritten: ['Dead Poets Society', 'The Last Wave', 'The Way Back '] }
 ];
 
 const movieInfo = {
     title: 'The Truman Show',
-    genre: 'satirical social science fiction comedy-drama',
+    genre: 'satirical, social science-fiction, comedy, drama',
     releaseYear: '1998',
     poster: 'img\the-truman-show-movie-poster-md.jpg',
     trailer: 'https://www.youtube.com/watch?v=LfXTASYB14M&ab_channel=HDRetroTrailers',
