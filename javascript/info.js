@@ -6,7 +6,7 @@ const startInfo = performance.now();
 //////////////////////////////////
 
 const actorInfoList = [
-    { name: 'Jim Carrey', birthYear: 'January 17 1962', moviesPlayed: ['The Mask', 'Ace Ventura: When Nature calls', 'Yes Man', 'Liar Liar'], wikiArticle: 'wiki/Jim_Carrey'},
+    { name: 'Jim Carrey', birthYear: 'January 17 1962', moviesPlayed: ['The Mask', 'Ace Ventura: When Nature calls', 'Yes Man', 'Liar Liar'], wikiArticle: 'wiki/Jim_Carrey' },
     { name: 'Laura Linney', birthYear: 'February 5 1964', moviesPlayed: ['Blind Spot', 'Love Actually', 'Nocturnal Animals', 'Mystic River'], wikiArticle: 'wiki/Laura_Linney' },
     { name: 'Noah Emmerich', birthYear: 'February 27 1965', moviesPlayed: ['Last Action Hero', 'Life', 'Super 8', 'Jane Got A Gun'], wikiArticle: 'wiki/Noah_Emmerich' },
     { name: 'Holland Taylor', birthYear: 'Jannuary 14 1943', moviesPlayed: ['Fame', 'To Die For', 'Legally Blond', 'The Wedding Date'], wikiArticle: 'wiki/Holland_Taylor' },
@@ -15,6 +15,23 @@ const actorInfoList = [
     { name: 'Brian Delate', birthYear: 'April 8 1949', moviesPlayed: ['Jacknife', 'The Shawshank Redemption', 'The Brave One', 'The Orphan Killer'], wikiArticle: 'wiki/Jim_Carrey' },
     { name: 'Paul Giamatti', birthYear: 'June 6 1967', moviesPlayed: ['Man on the Moon', 'Win Win', 'The Amazing Spider-Man 2', 'Love & Mercy', 'San Andreas'], wikiArticle: 'wiki/Jim_Carrey' },
 ];
+
+const writerInfoList = [
+    { name: 'Example', wikipediaArticle: 'Example Article', birthYear: 'January 01 1900', moviesWritten: ['Movie 1', 'movie 2'] },
+];
+
+const directorInfoList = [
+    { name: 'Example', wikipediaArticle: 'Example Article', birthYear: 'January 01 1900', moviesWritten: ['Movie 1', 'movie 2'] },
+];
+
+const movieInfo = {
+    title: 'The Truman Show',
+    genre: 'A genre',
+    releaseYear: 'Release year',
+    poster: 'posterImageLink',
+    trailer: 'link to trailer',
+    plot: 'Plot description string',
+};
 
 //////////////////////////////////
 //  CLASS INSTANCES GENERATION  //
