@@ -30,8 +30,6 @@ for (let i = 0; i < actorInfoList.length; i++) {
 
 const tempWriterInfoList = [
     { name: 'Andrew Niccol', birthYear: 'June 10 1964', moviesPlayed: ['Gattica', 'Simoe', 'in Time'] },
-    { name: 'Writer2', birthYear: '3643', moviesPlayed: ['corn wars', 'meth investigators'] },
-    { name: 'Writer3', birthYear: '1999', moviesPlayed: ['skoobiedoo', 'meth investigators', 'operation theft'] },
 ];
 
 // create an array of Writer instances from tempWriterInfoList
@@ -43,9 +41,7 @@ for (let i = 0; i < tempWriterInfoList.length; i++) {
 }
 
 const tempDirectorInfoList = [
-    { name: 'Director1', birthYear: '1465', moviesDirected: ['skediddle', 'skoobiedoo', 'corn wars'] },
-    { name: 'Director2', birthYear: '3643', moviesDirected: ['corn wars', 'meth investigators'] },
-    { name: 'Director3', birthYear: '1999', moviesDirected: ['skoobiedoo', 'meth investigators', 'operation theft'] },
+    { name: 'Peter Weir', birthYear: 'August 21 1944', moviesDirected: ['Dead Poets Society', 'The Last Wave', 'The Way Back '] },
 ];
 
 // create an array of Director instances from tempDirectorInfoList
