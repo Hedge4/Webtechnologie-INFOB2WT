@@ -94,9 +94,8 @@ const applyStyles = () => {
   const property = document.getElementById("attribute-selector").value;
   const value = document.querySelector(".style-menu__value--selected");
   allElements = document.querySelectorAll(element);
-  console.log(value.textContent);
+  console.log(property);
   for(let i = 0; i < allElements.length; i ++) {
-
     switch(property){
       case "color":
         allElements[i].style.color = value.textContent;  
@@ -111,7 +110,8 @@ const applyStyles = () => {
         break;
 
       case "font-size":
-        allElements[i].style.fontSize = value.textContent;  
+        console.log("setting font size")
+        allElements[i].style.fontSize = value.textContent + "px";  
         break;
     }
   }
