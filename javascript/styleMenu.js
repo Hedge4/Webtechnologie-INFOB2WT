@@ -15,6 +15,7 @@ const resetStyleMenu = () => {
   if(valueList.classList.contains("style-menu__value-list--active")){
     valueList.classList.toggle("style-menu__value-list--active");
   }
+  resetSelectedValue();
 }
 
 const resetSelectedValue = () => {
@@ -37,8 +38,9 @@ const selectorControl = () => {
 // only if an element and attribute have been selected
 const expandMenu = () => {
 
+  const optionButton = document.getElementById("option-button")
   const menuArrow = document.getElementById("style-menu__arrow");
-  menuArrow.addEventListener("click", () => {
+  optionButton.addEventListener("click", () => {
 
     const elementSelector = document.getElementById("element-selector");
     const attSelector = document.getElementById("attribute-selector");
@@ -113,7 +115,7 @@ const applyStyles = () => {
 const resetStyles = () => {
   const resetButton = document.getElementById("reset-button");
   resetButton.addEventListener("click", () => {
-    const elementOptions = ["header", "footer", "body", "article", "section"];
+    const elementOptions = ["header", "footer", "body", "article", "section", "aside"];
     for(index in elementOptions){
       console.log(elementOptions);
       const allElements = document.querySelectorAll(elementOptions[index]);
