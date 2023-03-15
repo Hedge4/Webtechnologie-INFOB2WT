@@ -21,6 +21,56 @@ const actorInfoList = [
 // MAIN CONTENT GENERATING SCRIPT //
 ////////////////////////////////////
 
+const tempActorInfoList = [
+    { name: 'Actor1', birthYear: '1465', moviesPlayed: ['skediddle', 'skoobiedoo', 'corn wars'] },
+    { name: 'Actor2', birthYear: '3643', moviesPlayed: ['corn wars', 'meth investigators'] },
+    { name: 'Actor3', birthYear: '1999', moviesPlayed: ['skoobiedoo', 'meth investigators', 'operation theft'] },
+];
+
+// create an array of Actor instances from tempActorInfoList
+const actors = [];
+for (let i = 0; i < tempActorInfoList.length; i++) {
+    const actorInfo = tempActorInfoList[i];
+    actorInfo.id = `actor-${i}`;
+    actors.push(new Actor(actorInfo));
+}
+
+const tempWriterInfoList = [
+    { name: 'Writer1', birthYear: '1465', moviesPlayed: ['skediddle', 'skoobiedoo', 'corn wars'] },
+    { name: 'Writer2', birthYear: '3643', moviesPlayed: ['corn wars', 'meth investigators'] },
+    { name: 'Writer3', birthYear: '1999', moviesPlayed: ['skoobiedoo', 'meth investigators', 'operation theft'] },
+];
+
+// create an array of Writer instances from tempWriterInfoList
+const writers = [];
+for (let i = 0; i < tempWriterInfoList.length; i++) {
+    const writerInfo = tempWriterInfoList[i];
+    writerInfo.id = `writer-${i}`;
+    writers.push(new Actor(writerInfo));
+}
+
+const tempDirectorInfoList = [
+    { name: 'Director1', birthYear: '1465', moviesDirected: ['skediddle', 'skoobiedoo', 'corn wars'] },
+    { name: 'Director2', birthYear: '3643', moviesDirected: ['corn wars', 'meth investigators'] },
+    { name: 'Director3', birthYear: '1999', moviesDirected: ['skoobiedoo', 'meth investigators', 'operation theft'] },
+];
+
+// create an array of Director instances from tempDirectorInfoList
+const directors = [];
+for (let i = 0; i < tempDirectorInfoList.length; i++) {
+    const directorInfo = tempDirectorInfoList[i];
+    directorInfo.id = `director-${i}`;
+    directors.push(new Director(directorInfo));
+}
+
+const tempMovieObject = {
+    actors: actors,
+    writers: writers,
+    directors: directors,
+};
+
+console.log(tempMovieObject);
+
 // get the content div we need to add all of our generated elements to
 const contentDiv = document.getElementById('content');
 

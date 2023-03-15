@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="style/layout.css" />
   <link rel="stylesheet" type="text/css" href="style/portrait.css" />
   <link rel="stylesheet" type="text/css" href="style/background.css" />
+  <link rel="stylesheet" type="text/css" href="style/pages/info.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
@@ -20,7 +21,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 
   <script src="./javascript/styleMenu.js" defer></script>
-  <script src="./javascript/classes.js" defer></script>
+  <script src="./javascript/info_classes.js" defer></script>
   <script src="./javascript/info.js" defer></script>
 </head>
 
@@ -48,7 +49,7 @@
         <div id="content">
           <!-- stuff generated here -->
         </div>
-        <div id="sidebar">
+        <aside id="sidebar">
           <h2>Sidebar</h2>
           <h4>We have a sidebar</h4>
           <p>
@@ -62,7 +63,7 @@
             <li><a href="https://en.wikipedia.org/wiki/The_Truman_Show">The Truman Show - Wikipedia</a></li>
             <li><a href="https://www.rottentomatoes.com/m/truman_show">RottenTomatoes - The Truman Show</a></li>
           </ul>
-        </div>
+        </aside>
       </div>
 
       <footer>
@@ -73,7 +74,7 @@
             <h1>Go To</h1>
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li><a href="info.html" class="selected">Info</a></li>
+              <li><a href="info.html" class="footer-link--selected">Info</a></li>
               <li><a href="production.html">Production</a></li>
               <li><a href="cast.html">Cast</a></li>
               <li><a href="reception.html">Reception</a></li>
@@ -136,6 +137,7 @@
                   <option value="article">Article</option>
                   <option value="section">Section</option>
                   <option value="footer">Footer</option>
+                  <option value="aside">Aside</option>
                 </select>
               </div>
 
@@ -151,8 +153,10 @@
               </div>
 
               <div class="style-menu__wrapper">
-                <span class="style-menu__label">Options</span>
-                <div id="style-menu__arrow" class="style-menu__arrow"></div>
+                <div id="option-button" class="style-menu__option-button">
+                  <span class="style-menu__label">Options</span>
+                  <div id="style-menu__arrow" class="style-menu__arrow"></div>
+                </div>
                 <span id="style-menu-warning" class="style-menu__warning"></span>
               </div>
               <div id="options-wrapper" class="style-menu__value-list">

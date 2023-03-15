@@ -175,15 +175,6 @@ ul li a.footer-link--selected {
   font-weight: bold;
 }
 
-footer .footer__list ul li a:hover,
-footer .footer__list ul li a:focus {
-  color: rgb(65, 154, 172);
-  font-weight: bold;
-}
-
-.style-menu {
-  
-}
 
 .style-menu__wrapper {
   display: flex;
@@ -200,7 +191,14 @@ footer .footer__list ul li a:focus {
   width: fit-content;
   margin: auto;
   padding: 2px;
-  grid-column: 2;
+  min-width: 7.2em;
+  margin-right: 0;
+  cursor: pointer;
+}
+
+.style-menu__option-button {
+  cursor: pointer;
+  display: flex;
 }
 
 .style-menu__arrow {
@@ -273,7 +271,8 @@ footer .footer__list ul li a:focus {
 }
 
 .style-menu__button-wrapper button {
-  margin: 5px
+  margin: 5px;
+  cursor: pointer;
 }
 
 .style-menu__button {
