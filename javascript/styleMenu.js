@@ -91,21 +91,29 @@ const applyStyles = () => {
   const button = document.getElementById("apply-button");
   button.addEventListener("click", () => {
     const element = document.getElementById("element-selector").value;
-  const attribute = document.getElementById("attribute-selector").value;
+  const property = document.getElementById("attribute-selector").value;
   const value = document.querySelector(".style-menu__value--selected");
   allElements = document.querySelectorAll(element);
   console.log(value.textContent);
   for(let i = 0; i < allElements.length; i ++) {
-    var currentStyle = allElements[i].getAttribute("style");
-    var newValue;
-    if(currentStyle){
-      newValue = currentStyle + "; " + attribute + ":" + value.textContent;
+
+    switch(property){
+      case "color":
+        allElements[i].style.color = value.textContent;  
+        break;
+
+      case "font-family":
+        allElements[i].style.fontFamily = value.textContent;  
+        break;
+
+      case "background-color":
+        allElements[i].style.backgroundColor = value.textContent; 
+        break;
+
+      case "font-size":
+        allElements[i].style.fontSize = value.textContent;  
+        break;
     }
-    else{
-      newValue = attribute + " : " + value.textContent;
-    }
-    console.log(currentStyle);
-    allElements[i].setAttribute("style", newValue);
   }
 
   });
