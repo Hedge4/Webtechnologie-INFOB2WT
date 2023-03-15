@@ -1,57 +1,13 @@
+// track how fast our script executes
 const startClasses = performance.now();
 
-/*
-class HtmlElement {
-    constructor(options) {
-        this.text = options.text;
-        this.classes = options.classes || [];
-        this.attributes = options.attributes || [];
-        this.eventListeners = options.eventListeners || [];
 
-        if (options.elementType) {
-            this.elementType = options.elementType;
-        } else {
-            throw (`Error creating ${this.constructor.name} object as it didn't get an elementType!`);
-        }
-    }
-
-    generateElement() {
-        let elem;
-
-        try {
-            // create our element
-            elem = document.createElement(this.elementType);
-            if (this.text) {
-                elem.appendChild(document.createTextNode(this.text));
-            }
-
-            // add our classes
-            this.classes.forEach(e => {
-                elem.classList.add(e);
-            });
-
-            // add our attributes
-            Object.keys(this.attributes).forEach(e => {
-                elem.setAttribute(e, this.attributes[e]);
-            });
-
-            // add event listeners
-            Object.keys(this.eventListeners).forEach(e => {
-                elem.addEventListener(e, this.eventListeners[e]);
-            });
-        } catch (error) {
-            // add some custom information to the error
-            error.message = `Error generating HTML from ${this.constructor.name} object! — ` + error.message;
-            throw (error);
-        }
-
-        return elem;
-    }
-}
-*/
+/////////////////////////////////
+// DOM ELEMENT GENERATION CODE //
+/////////////////////////////////
 
 /**
- * Creates a HTML DOM element and its children with classes, attributes and event listeners, ready to be added to the DOM.
+ * Function called by the classes defined in this file upon generation, which creates a HTML DOM element and its children with classes, attributes, and event listeners based on the given input object, ready to be added to the DOM.
  * @param {Object} options Provides the type, content, classes, attributes, event listeners, and children for the element.
  * @param {string} options.tagName The tag name of the element used in document.createElement().
  * @param {string} [options.text] Content for a textNode inside this DOM element.
@@ -136,6 +92,11 @@ function generateDomElement(options) {
 }
 
 
+////////////////////////////////////
+// CLASSES AND GENERATION METHODS //
+////////////////////////////////////
+
+// the Artist class only defines basic properties and doesn't have a generate() method
 class Artist {
     constructor(options) {
         this.name = options.name;
@@ -146,7 +107,6 @@ class Artist {
     }
 }
 
-
 // eslint-disable-next-line
 class Director extends Artist {
     constructor(options) {
@@ -155,7 +115,6 @@ class Director extends Artist {
     }
 }
 
-
 // eslint-disable-next-line
 class Writer extends Artist {
     constructor(options) {
@@ -163,7 +122,6 @@ class Writer extends Artist {
         this.booksWritten = options.booksWritten || [];
     }
 }
-
 
 // eslint-disable-next-line
 class Actor extends Artist {
@@ -202,7 +160,6 @@ class Actor extends Artist {
     }
 }
 
-
 // eslint-disable-next-line
 class Movie {
     constructor(options) {
@@ -214,7 +171,7 @@ class Movie {
     }
 
     generateInfoCard() {
-        // generate an info card about the move with the year, title, genre, wikipedia information, etc.
+        // generate an info card about the movie with the year, title, genre, wikipedia information, etc.
     }
 }
 
@@ -223,4 +180,6 @@ class Movie {
 
 // possible setting: choose how much text from wikipedia is displayed before it's cut off. "Read more..." link to wikipedia.
 
+
+// log how long it took our script to finish executing
 console.log(`Classes loaded! ${Math.round((performance.now() - startClasses) * 10) / 10}ms`);
