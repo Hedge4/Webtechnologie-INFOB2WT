@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en-US">
 
 <head>
   <title>Reviews — The Truman Show</title>
@@ -48,11 +48,13 @@
 
         <h2>Here is an overview of how different sites rated The Truman Show:</h2>
         <table class="review_table">
-          <tr>
-            <th>Website</th>
-            <th>Stars</th>
-            <th>Score</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>Website</th>
+              <th>Stars</th>
+              <th>Score</th>
+            </tr>
+          </thead>
           <tr>
             <td>
               <p><a href="https://www.imdb.com/">IMDB</a></p>
@@ -171,12 +173,12 @@
         <div class="footer__list">
           <h1>Go To</h1>
           <ul>
-            <li><a href="index.html" class="selected">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="info.html">Info</a></li>
             <li><a href="production.html">Production</a></li>
             <li><a href="cast.html">Cast</a></li>
             <li><a href="reception.html">Reception</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="reviews.html" class="footer-link--selected">Reviews</a></li>
           </ul>
         </div>
 
@@ -234,6 +236,7 @@
               <option value="article">Article</option>
               <option value="section">Section</option>
               <option value="footer">Footer</option>
+              <option value="aside">Aside</option>
             </select>
           </div>
           
@@ -249,8 +252,10 @@
           </div>
           
           <div class="style-menu__wrapper">
-            <span class="style-menu__label" >Options</span>
-            <div id="style-menu__arrow" class="style-menu__arrow"></div>
+            <div id="option-button" class="style-menu__option-button">
+              <span class="style-menu__label">Options</span>
+              <div id="style-menu__arrow" class="style-menu__arrow"></div>
+            </div>
             <span id="style-menu-warning" class="style-menu__warning"></span>
           </div>
           <div id="options-wrapper" class="style-menu__value-list">

@@ -2,6 +2,14 @@ body {
   background: black;
 }
 
+article {
+  width: 80%;
+}
+
+section {
+  margin-top: 30px;
+}
+
 #site_box {
   width: 100%;
 }
@@ -159,17 +167,14 @@ footer {
   color: rgb(200, 170, 148);
 }
 
-footer .footer__list ul li a.selected {
+
+
+ul li a.footer-link--selected {
   text-decoration: underline;
   color: rgb(65, 154, 172);
   font-weight: bold;
 }
 
-footer .footer__list ul li a:hover,
-footer .footer__list ul li a:focus {
-  color: rgb(65, 154, 172);
-  font-weight: bold;
-}
 
 .style-menu {
   
@@ -190,7 +195,12 @@ footer .footer__list ul li a:focus {
   width: fit-content;
   margin: auto;
   padding: 2px;
-  grid-column: 2;
+  cursor: pointer;
+}
+
+.style-menu__option-button {
+  cursor: pointer;
+  display: flex;
 }
 
 .style-menu__arrow {
@@ -263,7 +273,8 @@ footer .footer__list ul li a:focus {
 }
 
 .style-menu__button-wrapper button {
-  margin: 5px
+  margin: 5px;
+  cursor: pointer;
 }
 
 .style-menu__button {
@@ -289,3 +300,6 @@ footer .footer__list ul li a:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: #0006b3;
 }
+
+
+

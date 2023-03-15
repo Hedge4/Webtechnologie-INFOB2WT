@@ -59,3 +59,10 @@
 .fa-star--checked {
   color: orange;
 }
+
+
+@media only screen and (max-width: 600px){
+  .review_table {
+    margin-left: 0px;
+  }
+}
