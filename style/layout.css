@@ -2,6 +2,14 @@ body {
   background: black;
 }
 
+article {
+  width: 80%;
+}
+
+section {
+  margin-top: 30px;
+}
+
 #site_box {
   width: 100%;
 }
@@ -289,3 +297,6 @@ footer .footer__list ul li a:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: #0006b3;
 }
+
+
+
