@@ -1,4 +1,4 @@
-#actors-box>div {
+.actor-box {
     border: 3px double blue;
     border-radius: 10px;
     padding: 1em;
@@ -6,4 +6,20 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+}
+
+.actor-box>* {
+    margin-inline: 0.5em;
+}
+
+.actor-info h3 {
+    margin-bottom: 0.2em;
+}
+
+.birth-year {
+    margin-top: 0;
+}
+
+.actor-img {
+    width: 25%;
 }
