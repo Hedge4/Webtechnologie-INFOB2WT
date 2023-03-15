@@ -167,7 +167,9 @@ footer {
   color: rgb(200, 170, 148);
 }
 
-footer .footer__list ul li a.selected {
+
+
+ul li a.footer-link--selected {
   text-decoration: underline;
   color: rgb(65, 154, 172);
   font-weight: bold;
