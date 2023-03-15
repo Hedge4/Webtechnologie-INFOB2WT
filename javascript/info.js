@@ -16,9 +16,6 @@ const actorInfoList = [
     { name: 'Paul Giamatti', birthYear: 'June 6 1967', moviesPlayed: ['Man on the Moon', 'Win Win', 'The Amazing Spider-Man 2', 'Love & Mercy', 'San Andreas'] },
 ];
 
-const movieList = [
-    {name: 'test'}
-]
 
 ////////////////////////////////////
 // MAIN CONTENT GENERATING SCRIPT //
