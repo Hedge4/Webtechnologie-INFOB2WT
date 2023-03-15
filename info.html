@@ -2,32 +2,178 @@
 <html>
 
 <head>
-    <!-- <title>Info — The Truman Show</title>
-    <meta name="description" content="Static website about our favorite movie" />
-    <link rel="stylesheet" type="text/css" href="style/theme.css" />
-    <link rel="stylesheet" type="text/css" href="style/layout.css" />
-    <link rel="stylesheet" type="text/css" href="style/portrait.css" />
-    <link rel="stylesheet" type="text/css" href="style/background.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
-    <meta name="keywords" content="movie" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Info — The Truman Show</title>
+  <meta name="description" content="A dynamic website about our favorite movie" />
+  <link rel="stylesheet" type="text/css" href="style/theme.css" />
+  <link rel="stylesheet" type="text/css" href="style/layout.css" />
+  <link rel="stylesheet" type="text/css" href="style/portrait.css" />
+  <link rel="stylesheet" type="text/css" href="style/background.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
+  <meta name="keywords" content="movie" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="favicon" type="image/x-icon" href="img/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"> -->
+  <link rel="favicon" type="image/x-icon" href="img/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+  <script src="./javascript/styleMenu.js" defer></script>
+  <script src="./javascript/classes.js" defer></script>
+  <script src="./javascript/info.js" defer></script>
 </head>
 
 <body>
-    <div id="main">
-        <div id="actors-box">
+  <div id="background"></div>
+  <div id="site_box">
+    <div class="main-content-wrapper">
+      <div id="header">
+        <div id="menubar">
+          <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li class="selected"><a href="info.html">Info</a></li>
+            <li><a href="production.html">Production</a></li>
+            <li><a href="cast.html">Cast</a></li>
+            <li><a href="reception.html">Reception</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+          </ul>
         </div>
-    </div>
+        <div id="title_box">
+          <h1>The Truman Show</h1>
+        </div>
+      </div>
 
-    <script src="./javascript/classes.js"></script>
-    <script src="./javascript/info.js"></script>
+      <div id="site_content">
+        <div id="content">
+          <div id="actors-box">
+            <!-- stuff generated here -->
+          </div>
+        </div>
+        <div id="sidebar">
+          <h2>Sidebar</h2>
+          <h4>We have a sidebar</h4>
+          <p>
+            ...because it looks fancy!<br>
+            <br>
+            We will use it in the future.
+          </p>
+          <h2>References</h2>
+          <ul>
+            <li><a href="https://www.imdb.com/title/tt0120382/">The Truman Show</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/The_Truman_Show">The Truman Show - Wikipedia</a></li>
+            <li><a href="https://www.rottentomatoes.com/m/truman_show">RottenTomatoes - The Truman Show</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        <div id="footer__wrapper">
+          <img src="./img/the-truman-show-movie-poster-md.jpg"
+            alt="An image showing the cover of the move The Truman Show" />
+          <div class="footer__list">
+            <h1>Go To</h1>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="info.html" class="selected">Info</a></li>
+              <li><a href="production.html">Production</a></li>
+              <li><a href="cast.html">Cast</a></li>
+              <li><a href="reception.html">Reception</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__list">
+            <h1>Where to Watch</h1>
+            <ul>
+              <li><a href="https://www.primevideo.com/">Amazon Prime</a></li>
+              <li><a href="https://tv.apple.com/us/movie/umc.cmc.3thpf98o5diknnctdycef69fu">Apple TV</a></li>
+              <li><a href="https://www.vudu.com/">VUDU</a></li>
+              <li><a href="https://www.youtube.com/">Youtube</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__list">
+            <h1>Other Sites</h1>
+            <ul>
+              <li><a href="https://www.rottentomatoes.com/m/truman_show">Rotten Tomatoes</a></li>
+              <li><a href="https://www.imdb.com/title/tt0120382/">imdb</a></li>
+              <li><a href="https://www.moviemeter.nl/film/189">MoveMeter</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h1>Contact information</h1>
+            <p>
+              Cupertino, California<br>
+              Mountain View, California<br>
+              Redmond, Washington<br>
+              <br>
+              Email us: no-hippo@yahoo.com<br>
+              Or fax us: +01 12 35 813 2134
+            </p>
+          </div>
+
+          <div>
+            <h1>Created By</h1>
+            <p>
+              Calvin Persaud<br>
+              Hedde van Heerde<br>
+              Marijn Heitbrink<br>
+              <br>
+              Created for the INFOB2WT<br>
+              course at Utrecht University.
+            </p>
+          </div>
+
+          <div class="style-menu">
+            <h1>Change up the appearance!</h2>
+              <div class="style-menu__wrapper">
+                <label for="element-selector" class="style-menu__label">Select Element</label>
+                <select id="element-selector" class="style-menu__selector">
+                  <option value="default">...</option>
+                  <option value="body">Body</option>
+                  <option value="header">Header</option>
+                  <option value="article">Article</option>
+                  <option value="section">Section</option>
+                  <option value="footer">Footer</option>
+                </select>
+              </div>
+
+              <div class="style-menu__wrapper">
+                <label for="attribute-selector" class="style-menu__label">Select Attribute</label>
+                <select id="attribute-selector" class="style-menu__selector">
+                  <option value="default">...</option>
+                  <option value="color">Text Color</option>
+                  <option value="font-family">Font</option>
+                  <option value="font-size">Font Size</option>
+                  <option value="background-color">Color</option>
+                </select>
+              </div>
+
+              <div class="style-menu__wrapper">
+                <span class="style-menu__label">Options</span>
+                <div id="style-menu__arrow" class="style-menu__arrow"></div>
+                <span id="style-menu-warning" class="style-menu__warning"></span>
+              </div>
+              <div id="options-wrapper" class="style-menu__value-list">
+                <ul id="options-list">
+                  <li class="style-menu__value">Red</li>
+                  <li class="style-menu__value">Blue</li>
+                  <li class="style-menu__value">Green</li>
+                  <li class="style-menu__value">Yellow</li>
+                </ul>
+
+                <div class="style-menu__button-wrapper">
+                  <button id="reset-button">Reset</button>
+                  <button id="apply-button">Apply</button>
+                </div>
+              </div>
+          </div>
+      </footer>
+
+    </div>
+  </div>
 </body>
 
 </html>
