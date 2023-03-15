@@ -6,14 +6,14 @@ let startInfo = performance.now();
 //////////////////////////////////
 
 const actorInfoList = [
-    { name: 'Jim Carrey', birthYear: 'January 17 1962', moviesPlayed: ['The Mask', 'Ace Ventura: When Nature calls', 'Yes Man', 'Liar Liar'], wikiArticle: 'wiki/Jim_Carrey' },
-    { name: 'Laura Linney', birthYear: 'February 5 1964', moviesPlayed: ['Blind Spot', 'Love Actually', 'Nocturnal Animals', 'Mystic River'], wikiArticle: 'wiki/Laura_Linney' },
-    { name: 'Noah Emmerich', birthYear: 'February 27 1965', moviesPlayed: ['Last Action Hero', 'Life', 'Super 8', 'Jane Got A Gun'], wikiArticle: 'wiki/Noah_Emmerich' },
-    { name: 'Holland Taylor', birthYear: 'Jannuary 14 1943', moviesPlayed: ['Fame', 'To Die For', 'Legally Blond', 'The Wedding Date'], wikiArticle: 'wiki/Holland_Taylor' },
-    { name: 'Ed Harris', birthYear: 'November 28 1950', moviesPlayed: ['Alamo Bay', 'The Rock', 'Snowpiercer', 'Top Gun: Maverick'], wikiArticle: 'wiki/Jim_Carrey' },
-    { name: 'Natascha McElhone', birthYear: 'December 14 1971', moviesPlayed: ['The Devils Own', 'Killing me Softly', 'Carmen', 'London Town'], wikiArticle: 'wiki/Jim_Carrey' },
-    { name: 'Brian Delate', birthYear: 'April 8 1949', moviesPlayed: ['Jacknife', 'The Shawshank Redemption', 'The Brave One', 'The Orphan Killer'], wikiArticle: 'wiki/Jim_Carrey' },
-    { name: 'Paul Giamatti', birthYear: 'June 6 1967', moviesPlayed: ['Man on the Moon', 'Win Win', 'The Amazing Spider-Man 2', 'Love & Mercy', 'San Andreas'], wikiArticle: 'wiki/Jim_Carrey' },
+    { name: 'Jim Carrey', birthYear: 'January 17 1962', moviesPlayed: ['The Mask', 'Ace Ventura: When Nature calls', 'Yes Man', 'Liar Liar'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\jim_Carrey.jpg'},
+    { name: 'Laura Linney', birthYear: 'February 5 1964', moviesPlayed: ['Blind Spot', 'Love Actually', 'Nocturnal Animals', 'Mystic River'], wikiArticle: 'wiki/Laura_Linney', photoLink: 'img\laura_linney.jpg' },
+    { name: 'Noah Emmerich', birthYear: 'February 27 1965', moviesPlayed: ['Last Action Hero', 'Life', 'Super 8', 'Jane Got A Gun'], wikiArticle: 'wiki/Noah_Emmerich', photoLink: 'img\noah_emmerich.jpg' },
+    { name: 'Holland Taylor', birthYear: 'Jannuary 14 1943', moviesPlayed: ['Fame', 'To Die For', 'Legally Blond', 'The Wedding Date'], wikiArticle: 'wiki/Holland_Taylor', photoLink: 'img\holland_taylor.jpg' },
+    { name: 'Ed Harris', birthYear: 'November 28 1950', moviesPlayed: ['Alamo Bay', 'The Rock', 'Snowpiercer', 'Top Gun: Maverick'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\ed_harris.jpg' },
+    { name: 'Natascha McElhone', birthYear: 'December 14 1971', moviesPlayed: ['The Devils Own', 'Killing me Softly', 'Carmen', 'London Town'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\natasha_mcelhone.jpg' },
+    { name: 'Brian Delate', birthYear: 'April 8 1949', moviesPlayed: ['Jacknife', 'The Shawshank Redemption', 'The Brave One', 'The Orphan Killer'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\brian_delate.jpg' },
+    { name: 'Paul Giamatti', birthYear: 'June 6 1967', moviesPlayed: ['Man on the Moon', 'Win Win', 'The Amazing Spider-Man 2', 'Love & Mercy', 'San Andreas'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\paul_giammati.jpg' },
 ];
 
 const writerInfoList = [
@@ -21,8 +21,9 @@ const writerInfoList = [
 ];
 
 const directorInfoList = [
-    { name: 'Peter Weir', wikipediaArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesWritten: ['Dead Poets Society', 'The Last Wave', 'The Way Back '] }
+    { name: 'Peter Weir', wikipediaArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesWritten: ['Dead Poets Society', 'The Last Wave', 'The Way Back '], photoLink: 'img\peter_weir.jpg' }
 ];
+
 
 const movieInfo = {
     title: 'The Truman Show',
