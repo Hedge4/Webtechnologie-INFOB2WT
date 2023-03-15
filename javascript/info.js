@@ -1,5 +1,5 @@
 // track how fast our script executes
-const startInfo = performance.now();
+let startInfo = performance.now();
 
 //////////////////////////////////
 //   PAGE CONTENT INFORMATION   //
@@ -45,26 +45,18 @@ for (let i = 0; i < actorInfoList.length; i++) {
     actors.push(new Actor(actorInfo));
 }
 
-const tempWriterInfoList = [
-    { name: 'Andrew Niccol', birthYear: 'June 10 1964', moviesPlayed: ['Gattica', 'Simone', 'in Time'], wikiArticle: wiki/Peter_Weir },
-];
-
 // create an array of Writer instances from tempWriterInfoList
 const writers = [];
-for (let i = 0; i < tempWriterInfoList.length; i++) {
-    const writerInfo = tempWriterInfoList[i];
+for (let i = 0; i < writerInfoList.length; i++) {
+    const writerInfo = writerInfoList[i];
     writerInfo.id = `writer-${i}`;
     writers.push(new Actor(writerInfo));
 }
 
-const tempDirectorInfoList = [
-    { name: 'Peter Weir', birthYear: 'August 21 1944', moviesDirected: ['Dead Poets Society', 'The Last Wave', 'The Way Back '], wikiArticle: 'wiki/Jim_Carrey' },
-];
-
 // create an array of Director instances from tempDirectorInfoList
 const directors = [];
-for (let i = 0; i < tempDirectorInfoList.length; i++) {
-    const directorInfo = tempDirectorInfoList[i];
+for (let i = 0; i < directorInfoList.length; i++) {
+    const directorInfo = directorInfoList[i];
     directorInfo.id = `director-${i}`;
     directors.push(new Director(directorInfo));
 }
@@ -76,6 +68,7 @@ const movie = new Movie({
     directors: directors,
 });
 
+// log our finished Movie instance
 console.log(movie);
 
 
@@ -95,6 +88,7 @@ movieElements.forEach(movieElement => {
 
 // checkpoint after which initial page content generation is done
 console.log(`Initial content loaded! ${Math.round((performance.now() - startInfo) * 10) / 10}ms`);
+startInfo = performance.now();
 
 
 // use our movie Class's addExtraInfo() method to try to add information from wikipedia to the DOM

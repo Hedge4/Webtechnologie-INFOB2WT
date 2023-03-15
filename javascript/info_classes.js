@@ -88,6 +88,7 @@ function generateDomElement(options) {
         });
     }
 
+    // return our finished DOM element
     return elem;
 }
 
@@ -95,23 +96,41 @@ function generateDomElement(options) {
  * Function called with .call() by constructors of our classes, that loads general information from wikipedia.
  * Doesn't return anything, and just adds to the DOM element with the right id upon success.
  */
-function loadWikipediaData() {
-    if (!this.wikipediaLink) return;
+function addWikipediaData() {
+    // we return a promise so we can check when everything is done
+    // we don't need reject() since we just log it here if we run into any problems
+    return new Promise((resolve) => {
+        // use Artist name if no wikipediaPage is defined
+        const wikiSearch = this.wikiArticle || this.name;
+        const query = encodeURI(wikiSearch);
 
-    const query = encodeURI(this.wikipediaLink);
-    this.wikiLink = `https://en.wikipedia.org/w/index.php?search=${query}`;
-    const dataURL = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}&origin=*&format=json`;
+        // generate and store a Wikipedia search link
+        const wikipediaLink = `https://en.wikipedia.org/w/index.php?search=${query}`;
+        // and also a Wikipedia API call
+        const dataURL = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}&origin=*&format=json`;
 
-    // fetch our data, then add it to the DOM
-    fetch(dataURL).then(res => {
-        res.json().then(resData => {
+        // fetch our data, then add it to the DOM
+        fetch(dataURL).then(res => {
+            res.json().then(resData => {
 
-            console.log(resData);
+                // log the data we received (debugging)
+                console.log(resData);
 
-            for (const key in resData.query.pages) {
-                const element = resData.query.pages[key];
-                this.wikiData = element.extract;
-            }
+                for (const key in resData.query.pages) {
+                    const element = resData.query.pages[key];
+                    console.log(element.extract);
+                }
+
+                // after adding the data to the DOM resolve our promise
+                resolve();
+            }).catch(error => {
+                console.log(`Couldn't convert to JSON for ${this.constructor.name} ${this.name}!`);
+                console.error(res);
+                console.error(error);
+            });
+        }).catch(error => {
+            console.log(`Couldn't complete fetch for ${this.constructor.name} ${this.name}! URL: ${dataURL}`);
+            console.error(error);
         });
     });
 }
@@ -127,8 +146,9 @@ class Artist {
         this.id = options.id;
         this.name = options.name;
         this.birthYear = options.birthYear;
-        this.wikipediaLink = options.wikipediaLink || undefined;
+        this.wikiArticle = options.wikiArticle || undefined; // optional
 
+        if (!this.id) throw (`ConstructorError: ${this.constructor.name} must have an id!`);
         if (!this.name) throw (`ConstructorError: ${this.constructor.name} must have a name!`);
         if (!this.birthYear) throw (`ConstructorError: ${this.constructor.name} must have a year of birth!`);
     }
@@ -138,7 +158,7 @@ class Artist {
 class Director extends Artist {
     constructor(options) {
         super(options);
-        this.moviesDirected = options.moviesDirected || [];
+        this.moviesDirected = options.moviesDirected || []; // optional
     }
 }
 
@@ -146,7 +166,7 @@ class Director extends Artist {
 class Writer extends Artist {
     constructor(options) {
         super(options);
-        this.booksWritten = options.booksWritten || [];
+        this.booksWritten = options.booksWritten || []; // optional
     }
 
     generate() {
@@ -212,7 +232,10 @@ class Writer extends Artist {
 class Actor extends Artist {
     constructor(options) {
         super(options);
-        this.moviesPlayed = options.moviesPlayed || [];
+        this.moviesPlayed = options.moviesPlayed || []; // optional
+        this.photoLink = options.photoLink;
+
+        // if (!this.photoLink) throw (`ConstructorError: ${this.constructor.name} must have a link to a photo!`); // TODO
     }
 
     generate() {
@@ -318,9 +341,21 @@ class Movie {
      * Should be executed after page generation is done, this adds to the DOM later.
      */
     addExtraInfo() {
-        // array.forEach(element => {
-        //     //
-        // });
+        // we won't ever reject this promise since its only goal is telling us when it's done
+        return new Promise(resolve => {
+
+            // store the promises for all of the wikipedia API calls and DOM edits we'll make
+            const wikipediaPromises = [];
+
+            // get wikipedia information for our actors
+            this.actors.forEach(actor => {
+                wikipediaPromises.push(addWikipediaData().bind(actor));
+            });
+
+            // when all Promises are resolved, the page is fully loaded and we can resolve this main promise as well
+            Promise.all(wikipediaPromises)
+                .then(resolve());
+        });
     }
 }
 
