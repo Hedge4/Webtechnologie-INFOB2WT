@@ -148,6 +148,64 @@ class Writer extends Artist {
         super(options);
         this.booksWritten = options.booksWritten || [];
     }
+
+    generate() {
+        // we define our movieList beforehand to reduce clutter
+        const movieList = {
+            tagName: 'ol',
+            children: [],
+        };
+
+        // add a list element for each movie
+        this.moviesDirected.forEach(movieTitle => {
+            movieList.children.push({
+                tagName: 'li',
+                text: movieTitle,
+            });
+        });
+
+        return generateDomElement({
+            tagName: 'div',
+            eventListeners: ['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)],
+            attributes: [['id', [this.id]]],
+            classes: ['actor-box'],
+            children: [
+                {
+                    tagName: 'div',
+                    classes: ['actor-info'],
+                    children: [
+                        {
+                            tagName: 'h3',
+                            text: this.name,
+                        }, {
+                            tagName: 'p',
+                            classes: ['birth-year'],
+                            text: this.birthYear,
+                        }, {
+                            tagName: 'p',
+                            text: 'Couldn\'t find information.',
+                        },
+                    ],
+                },
+                {
+                    tagName: 'img',
+                    classes: ['actor-img'],
+                    attributes: [['src', 'https://images.freeimages.com/images/previews/54c/random-photography-3-1143357.jpg']],
+                },
+                {
+                    tagName: 'div',
+                    classes: ['actor-movies'],
+                    children: [
+                        {
+                            tagName: 'h4',
+                            text: 'Starred in:',
+                        },
+                        movieList,
+                    ],
+                },
+            ],
+        });
+    }
 }
 
 // eslint-disable-next-line
@@ -174,7 +232,7 @@ class Actor extends Artist {
 
         return generateDomElement({
             tagName: 'div',
-            eventListeners: ['click', () => alert(`${this.name} was clicked!`)],
+            eventListeners: ['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)],
             attributes: [['id', [this.id]]],
             classes: ['actor-box'],
             children: [
@@ -225,11 +283,44 @@ class Movie {
         this.directors = options.directors;
 
         // reject missing constructor params
-        if (!this.paramName) throw (`${this.constructor.name} must have ...!`);
+        if (!this.actors) throw (`${this.constructor.name} must have an actor list!`);
+        if (!this.writers) throw (`${this.constructor.name} must have a writer list!`);
+        if (!this.directors) throw (`${this.constructor.name} must have a director list!`);
     }
 
-    generateInfoCard() {
-        // generate an info card about the movie with the year, title, genre, wikipedia information, etc.
+    generate() {
+        // generate an DOM elements describing the movie with the year, title, genre, wikipedia information, etc.
+        // also execute the generator() methods of all other class instances, and add those to given DOM element
+        const generatedElements = [];
+
+        // use the actorInfoList to get a list of Actors. The constructor can throw an error, but since our
+        // information doesn't change dynamically this is only for development and we don't bother catching it.
+        const actorsDiv = document.createElement('div');
+        actorsDiv.id = 'actors-box';
+        this.actors.forEach(actor => {
+            try {
+                // generate the html element node for each Actor
+                actorsDiv.appendChild(actor.generate());
+            } catch (error) {
+                // catch any errors so the page still loads, and log them for debugging
+                console.error(error);
+            }
+        });
+        // append our generated actor elements to the DOM
+        generatedElements.push(actorsDiv);
+
+        // return all of the generated movie elements
+        return generatedElements;
+    }
+
+    /**
+     * Tries to get extra information for all of our Writer, Director and Actor instances from Wikipedia.
+     * Should be executed after page generation is done, this adds to the DOM later.
+     */
+    addExtraInfo() {
+        // array.forEach(element => {
+        //     //
+        // });
     }
 }
 

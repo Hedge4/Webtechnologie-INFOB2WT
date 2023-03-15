@@ -16,9 +16,9 @@ const actorInfoList = [
     { name: 'Paul Giamatti', birthYear: 'June 6 1967', moviesPlayed: ['Man on the Moon', 'Win Win', 'The Amazing Spider-Man 2', 'Love & Mercy', 'San Andreas'], wikiArticle: 'wiki/Jim_Carrey' },
 ];
 
-////////////////////////////////////
-// MAIN CONTENT GENERATING SCRIPT //
-////////////////////////////////////
+//////////////////////////////////
+//  CLASS INSTANCES GENERATION  //
+//////////////////////////////////
 
 // create an array of Actor instances from tempActorInfoList
 const actors = [];
@@ -52,6 +52,7 @@ for (let i = 0; i < tempDirectorInfoList.length; i++) {
     directors.push(new Director(directorInfo));
 }
 
+// create our movie instance
 const movie = new Movie({
     actors: actors,
     writers: writers,
@@ -60,26 +61,26 @@ const movie = new Movie({
 
 console.log(movie);
 
-// get the content div we need to add all of our generated elements to
+
+///////////////////////////////////////
+// MAIN PAGE GENERATION FROM CLASSES //
+///////////////////////////////////////
+
+// get the main content div and add generate all of our movie's page content elements
 const contentDiv = document.getElementById('content');
+const movieElements = movie.generate(); // this method generates all of the content
 
-// use the actorInfoList to get a list of Actors. The constructor can throw an error, but since our
-// information doesn't change dynamically this is only for development and we don't bother catching it.
-const actorList = actorInfoList.map(actorInfo => new Actor(actorInfo));
-const actorsDiv = document.createElement('div');
-actorsDiv.id = 'actors-box';
-actorList.forEach(actor => {
-    try {
-        // generate the html element node for each Actor
-        actorsDiv.appendChild(actor.generate());
-    } catch (error) {
-        // catch any errors so the page still loads, and log them for debugging
-        console.error(error);
-    }
+// add all of the generated elements to the DOM
+movieElements.forEach(movieElement => {
+    contentDiv.appendChild(movieElement);
 });
-// append our generated actor elements to the DOM
-contentDiv.appendChild(actorsDiv);
 
 
-// log how long it took our script to finish executing
-console.log(`Info loaded! ${Math.round((performance.now() - startInfo) * 10) / 10}ms`);
+// checkpoint after which initial page content generation is done
+console.log(`Initial content loaded! ${Math.round((performance.now() - startInfo) * 10) / 10}ms`);
+
+
+// use our movie Class's addExtraInfo() method to try to add information from wikipedia to the DOM
+movie.addExtraInfo()
+    // log how long it took our script to finish executing completely
+    .then(console.log(`Extra info from Wikipedia loaded! ${Math.round((performance.now() - startInfo) * 10) / 10}ms`));
