@@ -29,7 +29,7 @@ for (let i = 0; i < actorInfoList.length; i++) {
 }
 
 const tempWriterInfoList = [
-    { name: 'Andrew Niccol', birthYear: 'June 10 1964', moviesPlayed: ['Gattica', 'Simoe', 'in Time'] },
+    { name: 'Andrew Niccol', birthYear: 'June 10 1964', moviesPlayed: ['Gattica', 'Simone', 'in Time'] },
 ];
 
 // create an array of Writer instances from tempWriterInfoList
