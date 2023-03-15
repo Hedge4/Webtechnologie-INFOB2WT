@@ -17,11 +17,11 @@ const actorInfoList = [
 ];
 
 const writerInfoList = [
-    { name: 'Andrew Niccol', wikipediaArticle: 'wiki/Andrew_Niccol', birthYear: 'June 10 1964', moviesWritten: ['Gattica', 'Simone', 'in Time'] },
+    { name: 'Andrew Niccol', wikiArticle: 'wiki/Andrew_Niccol', birthYear: 'June 10 1964', moviesWritten: ['Gattica', 'Simone', 'in Time'], photoLink: 'img\\andrew_niccol.jpg'},
 ];
 
 const directorInfoList = [
-    { name: 'Peter Weir', wikipediaArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesWritten: ['Dead Poets Society', 'The Last Wave', 'The Way Back '], photoLink: 'img\\peter_weir.jpg' },
+    { name: 'Peter Weir', wikiArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesWritten: ['Dead Poets Society', 'The Last Wave', 'The Way Back '], photoLink: 'img\\peter_weir.jpg' },
 ];
 
 
@@ -31,7 +31,7 @@ const movieInfo = {
     releaseYear: '1998',
     poster: 'img\\the-truman-show-movie-poster-md.jpg',
     trailer: 'https://www.youtube.com/watch?v=LfXTASYB14M&ab_channel=HDRetroTrailers',
-    plot: '"The Truman Show" is a movie about a man named Truman who discovers that his entire life has been a television show, with him as the unwitting star.',
+    plot: '"The Truman Show" is a satirical drama film released in 1998, directed by Peter Weir and starring Jim Carrey as Truman Burbank. The film is about a man named Truman who lives in a seemingly idyllic town called Seahaven, which is actually a giant, elaborately designed set filled with actors portraying his friends and family, and even his wife Meryl.',
 };
 
 //////////////////////////////////
