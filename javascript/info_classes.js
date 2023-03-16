@@ -100,15 +100,35 @@ function addWikipediaData(fetchResult) {
     // return another promise so we know when the function is done adding the information to the DOM
     return new Promise((resolve) => {
         const artistElement = document.getElementById(this.id); // ids are generated upon element generation
-        // const informationElement = artistElement.getElementsByClassName();
+        const informationElement = artistElement.getElementsByClassName('artist__description')[0];
 
         // if we didn't find an extract, we instead link to a Wikipedia search
+        const wikiLinkPara = document.createElement('p');
+        wikiLinkPara.classList.add('artist__wikipedia-link');
+        const wikiLinkAnchor = document.createElement('a');
+        wikiLinkAnchor.appendChild(document.createTextNode('Find out more...'));
+        wikiLinkAnchor.href = this.wikipediaLink;
+        wikiLinkAnchor.title = 'Search on Wikipedia';
+        wikiLinkPara.appendChild(wikiLinkAnchor);
+        informationElement.parentElement.appendChild(wikiLinkPara);
+
+        // return here if we didn't get any information from Wikipedia
         if (!fetchResult.foundExtract) {
-            //
+            wikiLinkAnchor.textContent = 'Search for information...';
             resolve();
             return;
         }
 
+        // limit the length of our Wikipedia information
+        let newDescription = fetchResult.info;
+        const lengthLimit = this.simpleDescription ? 150 : 400;
+        if (newDescription.length > lengthLimit) {
+            newDescription = fetchResult.info.slice(0, lengthLimit - 3);
+            newDescription += '...';
+        }
+
+        // change textContent of artist__description class member to the information we found
+        informationElement.textContent = newDescription;
         resolve();
     });
 }
@@ -569,12 +589,16 @@ class Movie {
             // store the promises for all of the wikipedia API calls and DOM edits we'll make
             const wikipediaPromises = [];
 
-            // get wikipedia information for our actors
-            this.actors.forEach(actor => {
-                // set actor as 'this' in fetchWikipediaData()'s function scope
-                const receivedPromise = fetchWikipediaData.call(actor);
+            function getArtistWikipediaDescription(artist) {
+                // set artist as 'this' in fetchWikipediaData()'s function scope
+                const receivedPromise = fetchWikipediaData.call(artist);
                 wikipediaPromises.push(receivedPromise);
-            });
+            }
+
+            // get wikipedia information for our directors, writers and actors
+            this.directors.forEach(director => getArtistWikipediaDescription(director));
+            this.writers.forEach(writer => getArtistWikipediaDescription(writer));
+            this.actors.forEach(actor => getArtistWikipediaDescription(actor));
 
             // when all Promises are resolved, the page is fully loaded and we can resolve this main promise as well
             Promise.all(wikipediaPromises)
