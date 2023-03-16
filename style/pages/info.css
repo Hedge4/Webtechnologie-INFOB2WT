@@ -1,12 +1,13 @@
 .director-box,
 .writer-box,
 .actor-box {
-    border: 3px double blue;
+    border: 1px double blue;
     border-radius: 10px;
     padding: 1em;
     margin: 0.5em;
     display: flex;
-    flex-wrap: nowrap;
+    width: 90%; 
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -14,6 +15,8 @@
 .writer-box>*,
 .actor-box>* {
     margin-inline: 0.5em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
 }
 
 .director-info h3,
@@ -30,11 +33,5 @@
 .writer-img,
 .actor-img {
     width: 25%;
+    height: 35%;
 }
-
-.img {
-    max-width: 25%;
-    max-height: 80%;
-    width: auto;
-    height: auto;
-  }
