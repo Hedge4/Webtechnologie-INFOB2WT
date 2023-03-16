@@ -1,6 +1,6 @@
 const attValueMapping = { "color" : ["Red", "Green", "Blue", "Yellow"],
                           "background-color" : ["Grey", "White", "Black", "Blue"],
-                          "font-family" : ["Helvetica", "Garamond", "Futura", "Bodoni"],
+                          "font-family" : ["Helvetica", "Luminari", "Pristina", "Comic Sans MS"],
                           "font-size" : [14, 16, 18, 20] 
                         }
 
@@ -94,24 +94,28 @@ const applyStyles = () => {
   const property = document.getElementById("attribute-selector").value;
   const value = document.querySelector(".style-menu__value--selected");
   allElements = document.querySelectorAll(element);
-  console.log(property);
-  for(let i = 0; i < allElements.length; i ++) {
+  var allElementsArr = Array.from(allElements);
+  for(let i = 0; i < allElements.length; i++){
+    const childNodes = Array.from(allElements[i].getElementsByTagName("*"))
+    var allElementsArr = allElementsArr.concat(childNodes);
+  }
+
+  for(let i = 0; i < allElementsArr.length; i ++) {
     switch(property){
       case "color":
-        allElements[i].style.color = value.textContent;  
+        allElementsArr[i].style.color = value.textContent;  
         break;
 
       case "font-family":
-        allElements[i].style.fontFamily = value.textContent;  
+        allElementsArr[i].style.fontFamily = value.textContent;  
         break;
 
       case "background-color":
-        allElements[i].style.backgroundColor = value.textContent; 
+        allElementsArr[i].style.backgroundColor = value.textContent; 
         break;
 
       case "font-size":
-        console.log("setting font size")
-        allElements[i].style.fontSize = value.textContent + "px";  
+        allElementsArr[i].style.fontSize = value.textContent + "px";  
         break;
     }
   }
@@ -122,14 +126,12 @@ const applyStyles = () => {
 // Resets all styles to default when user presses "Reset"
 const resetStyles = () => {
   const resetButton = document.getElementById("reset-button");
+
   resetButton.addEventListener("click", () => {
-    const elementOptions = ["header", "footer", "body", "article", "section", "aside"];
-    for(index in elementOptions){
-      console.log(elementOptions);
-      const allElements = document.querySelectorAll(elementOptions[index]);
-      for(let i = 0; i < allElements.length; i++){
-        allElements[i].removeAttribute("style");
-      }
+
+    allElements = Array.from(document.getElementsByTagName("*"));
+    for(let i = 0; i < allElements.length; i++){
+      allElements[i].removeAttribute("style");
     }
   });
   resetStyleMenu();
