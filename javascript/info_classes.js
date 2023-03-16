@@ -85,7 +85,6 @@ function generateDomElement(options) {
     if (options.children && options.children.length > 0) {
         options.children.forEach(child => {
             elem.appendChild(child.isDomElement ? child : generateDomElement(child));
-            // elem.appendChild(generateDomElement(child));
         });
     }
 
@@ -452,9 +451,6 @@ class Movie {
         // also execute the generator() methods of all other class instances, and add those to given DOM element
         const generatedElements = [];
 
-        // page title
-        generatedElements.push(generateDomElement({ tagName: 'h1', text: 'General information' }));
-
         // use the list of Directors to generate each element and append them all to one div
         const directorsDiv = document.createElement('div');
         directorsDiv.id = 'directors-box';
@@ -489,6 +485,8 @@ class Movie {
         generatedElements.push(generateDomElement({
             tagName: 'article',
             children: [
+                // page title
+                { tagName: 'h1', classes: ['page-title'], text: 'General information' },
                 {
                     // general info box
                     tagName: 'section',
@@ -497,28 +495,64 @@ class Movie {
                         { tagName: 'p' },
                     ],
                 },
-                { tagName: 'h2', text: quantiseWords(directorsDiv.children.length, 'Director') },
-                directorsDiv,
-                { tagName: 'h2', text: quantiseWords(writersDiv.children.length, 'Writer') },
-                writersDiv,
+                {
+                    tagName: 'section',
+                    children: [
+                        { tagName: 'h2', text: quantiseWords(directorsDiv.children.length, 'Director') },
+                        directorsDiv,
+                    ],
+                },
+                {
+                    tagName: 'section',
+                    children: [
+                        { tagName: 'h2', text: quantiseWords(writersDiv.children.length, 'Writer') },
+                        writersDiv,
+                    ],
+                },
             ],
         }));
 
-        // use the actorInfoList to get a list of Actors. The constructor can throw an error, but since our
-        // information doesn't change dynamically this is only for development and we don't bother catching it.
-        const actorsDiv = document.createElement('div');
+        // // use the list of Actors to generate each element and append them all to one div
+        // const actorsDiv = document.createElement('div');
         // actorsDiv.id = 'actors-box';
+        // // if isDomElement() is true, createDomElement() will just append and not try to generate an element from it
+        // actorsDiv.isDomElement = true;
+        // this.actors.forEach(actor => {
+
+        //     try {
+        //         // generate the html element node for each Actor
+        //         actorsDiv.appendChild(actor.generate());
+        //     } catch (error) {
+        //         // catch any errors so the page still loads, and log them for debugging
+        //         console.error(error);
+        //     }
+        // });
+
+        // use the list of Actors to generate each element and append them all to one div
+        const actorsList = [];
         this.actors.forEach(actor => {
             try {
                 // generate the html element node for each Actor
-                actorsDiv.appendChild(actor.generate());
+                const actorElement = actor.generate();
+                // if isDomElement() is true, createDomElement() will just append and not try to generate an element from it
+                actorElement.isDomElement = true;
+                actorsList.push(actorElement);
             } catch (error) {
                 // catch any errors so the page still loads, and log them for debugging
                 console.error(error);
             }
         });
-        // append our generated actor elements to the DOM
-        generatedElements.push(actorsDiv);
+
+        // cast member(s) article
+        generatedElements.push(generateDomElement({
+            tagName: 'article',
+            attributes: [['id', 'actors-box']],
+            children: [
+                // page title
+                { tagName: 'h1', text: 'Cast ' + quantiseWords(actorsList.length, 'member') },
+                ...actorsList,
+            ],
+        }));
 
         // return all of the generated movie elements
         return generatedElements;
@@ -544,7 +578,7 @@ class Movie {
 
             // when all Promises are resolved, the page is fully loaded and we can resolve this main promise as well
             Promise.all(wikipediaPromises)
-                .then(() => { resolve(); console.log(wikipediaPromises); });
+                .then(() => { resolve(); });
         });
     }
 }
