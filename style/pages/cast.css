@@ -17,12 +17,14 @@
 
 .cast-member {
     display: flex;
+    
 }
 
 .cast-member__img {
     max-width: 15%;
     margin: auto;
     border-radius: 50px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .cast-member__text {
@@ -39,4 +41,42 @@
 .cast-member__text h2 {
     margin-top: 0;
     padding: 0;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    html {
+        background-color: antiquewhite;
+        color: black;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    html {
+        background: black;
+        color: black
+    }
+}
+
+@keyframes Animation{
+    0% {
+    }
+    10% {
+        transform:  scale(1.5);
+    }
+    16% {
+    }
+    22% {
+    }
+    100% {
+    }
+}
+
+.cast-member__img{
+    animation: Animation 1s linear 0s 1 normal none;
+}
+
+.cast-member__img:hover{
+    transform: scale(3.0);
 }
