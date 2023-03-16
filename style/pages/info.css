@@ -30,7 +30,7 @@
 .director__info,
 .writer__info,
 .actor__info {
-    width: 30%;
+    width: 25%;
 }
 
 .artist__name {
@@ -42,29 +42,6 @@
     margin-top: 0;
 }
 
-.artist__description {
-    margin-bottom: 0;
-}
-
-.director__image {
-    max-width: 35%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-}
-
-.writer__image,
-.actor__image {
-    max-width: 25%;
-    max-height: 80%;
-    width: auto;
-    height: auto;
-}
-
-.artist__movies-list {
-    width: 40%;
-}
-
 .artist__movies-list h4 {
     margin-top: 0;
     margin-bottom: 0.5em;
@@ -73,5 +50,48 @@
 .artist__movies-list ul {
     padding-left: 25px;
     margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+.director__image {
+    /* max-width: 35%; */
+    width: 35%;
+    max-height: 100%;
+    /* width: auto; */
+    height: auto;
+}
+
+.writer__image,
+.actor__image {
+    /* max-width: 25%; */
+    width: 25%;
+    max-height: 80%;
+    /* width: auto; */
+    height: auto;
+}
+
+.director__image,
+.writer__image {
+    margin-left: 10px;
+}
+
+.actor__image {
+    margin-right: 10px;
+}
+
+.artist__description {
+    width: 45%;
+}
+
+/* .writer-box .artist__description, */
+.director-box .artist__description {
+    width: 35%;
+}
+
+.artist__description p:first-child {
+    margin-top: 0;
+}
+
+.artist__description p:last-child {
     margin-bottom: 0;
 }

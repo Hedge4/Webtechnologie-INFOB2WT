@@ -110,7 +110,7 @@ function addWikipediaData(fetchResult) {
         wikiLinkAnchor.href = this.wikipediaLink;
         wikiLinkAnchor.title = 'Search on Wikipedia';
         wikiLinkPara.appendChild(wikiLinkAnchor);
-        informationElement.parentElement.appendChild(wikiLinkPara);
+        informationElement.appendChild(wikiLinkPara);
 
         // return here if we didn't get any information from Wikipedia
         if (!fetchResult.foundExtract) {
@@ -128,7 +128,7 @@ function addWikipediaData(fetchResult) {
         }
 
         // change textContent of artist__description class member to the information we found
-        informationElement.textContent = newDescription;
+        informationElement.children[0].textContent = newDescription;
         resolve();
     });
 }
@@ -274,22 +274,28 @@ class Director extends Artist {
                             tagName: 'p',
                             classes: ['artist__birth-year'],
                             text: this.birthYear,
-                        }, {
-                            tagName: 'p',
-                            classes: ['artist__description'],
-                            text: 'Couldn\'t find information.',
+                        },
+                        {
+                            tagName: 'div',
+                            classes: ['artist__movies-list'],
+                            children: [
+                                {
+                                    tagName: 'h4',
+                                    text: 'Also directed...',
+                                },
+                                movieList,
+                            ],
                         },
                     ],
                 },
                 {
                     tagName: 'div',
-                    classes: ['artist__movies-list'],
+                    classes: ['artist__description'],
                     children: [
                         {
-                            tagName: 'h4',
-                            text: 'Also directed...',
+                            tagName: 'p',
+                            text: 'Couldn\'t find information.',
                         },
-                        movieList,
                     ],
                 },
                 {
@@ -344,22 +350,28 @@ class Writer extends Artist {
                             tagName: 'p',
                             classes: ['artist__birth-year'],
                             text: this.birthYear,
-                        }, {
-                            tagName: 'p',
-                            classes: ['artist__description'],
-                            text: 'Couldn\'t find information.',
+                        },
+                        {
+                            tagName: 'div',
+                            classes: ['artist__movies-list'],
+                            children: [
+                                {
+                                    tagName: 'h4',
+                                    text: 'Also wrote for...',
+                                },
+                                movieList,
+                            ],
                         },
                     ],
                 },
                 {
                     tagName: 'div',
-                    classes: ['artist__movies-list'],
+                    classes: ['artist__description'],
                     children: [
                         {
-                            tagName: 'h4',
-                            text: 'Also wrote for...',
+                            tagName: 'p',
+                            text: 'Couldn\'t find information.',
                         },
-                        movieList,
                     ],
                 },
                 {
@@ -423,22 +435,28 @@ class Actor extends Artist {
                             tagName: 'p',
                             classes: ['artist__birth-year'],
                             text: this.birthYear,
-                        }, {
-                            tagName: 'p',
-                            classes: ['artist__description'],
-                            text: 'Couldn\'t find information.',
+                        },
+                        {
+                            tagName: 'div',
+                            classes: ['artist__movies-list'],
+                            children: [
+                                {
+                                    tagName: 'h4',
+                                    text: 'Also appeared in...',
+                                },
+                                movieList,
+                            ],
                         },
                     ],
                 },
                 {
                     tagName: 'div',
-                    classes: ['artist__movies-list'],
+                    classes: ['artist__description'],
                     children: [
                         {
-                            tagName: 'h4',
-                            text: 'Also appeared in...',
+                            tagName: 'p',
+                            text: 'Couldn\'t find information.',
                         },
-                        movieList,
                     ],
                 },
             ],
