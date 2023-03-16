@@ -62,14 +62,6 @@ for (let i = 0; i < directorInfoList.length; i++) {
     directors.push(new Director(directorInfo));
 }
 
-console.log(movieInfo);
-console.log({
-    ...movieInfo,
-    actors: actors,
-    writers: writers,
-    directors: directors,
-});
-
 // create our movie instance
 const movie = new Movie({
     ...movieInfo,
@@ -97,11 +89,11 @@ movieElements.forEach(movieElement => {
 
 
 // checkpoint after which initial page content generation is done
-console.log(`Initial content loaded! ${Math.round((performance.now() - startInfo) * 10) / 10}ms`);
+console.log(`Initial content generated! ${Math.round((performance.now() - startInfo) * 10) / 10}ms`);
 startInfo = performance.now();
 
 
 // use our movie Class's addExtraInfo() method to try to add information from wikipedia to the DOM
 movie.addExtraInfo()
     // log how long it took our script to finish executing completely when the promise resolves
-    .then(console.log(`Extra info from Wikipedia loaded! ${Math.round((performance.now() - startInfo) * 10) / 10}ms`));
+    .then(console.log(`Extra content from Wikipedia generated! ${Math.round((performance.now() - startInfo) * 10) / 10}ms`));

@@ -464,7 +464,9 @@ class Movie {
 
             // get wikipedia information for our actors
             this.actors.forEach(actor => {
-                wikipediaPromises.push(addWikipediaData().bind(actor)());
+                // set actor as 'this' in addWikipediaData()'s function scope
+                const receivedPromise = addWikipediaData.call(actor);
+                wikipediaPromises.push(receivedPromise);
             });
 
             // when all Promises are resolved, the page is fully loaded and we can resolve this main promise as well
@@ -481,4 +483,4 @@ class Movie {
 
 
 // log how long it took our script to finish executing
-console.log(`Classes loaded! ${Math.round((performance.now() - startClasses) * 10) / 10}ms`);
+console.log(`Classes script executed! ${Math.round((performance.now() - startClasses) * 10) / 10}ms`);
