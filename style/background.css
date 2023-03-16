@@ -14,11 +14,10 @@
 }
 
 /* so the site content is displayed on top of the background */
-#site_box {
+.site-container {
   position: absolute;
   top: 0px;
   min-height: 100vh;
-  min-height: 1;
 }
 
 /* image better fit for landscape mode */
