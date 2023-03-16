@@ -93,10 +93,33 @@ function generateDomElement(options) {
 }
 
 /**
- * Function called with .call() by constructors of our classes, that loads general information from wikipedia.
- * Doesn't return anything, and just adds to the DOM element with the right id upon success.
+ * Function called with .call() by fetchWikipediaData() with this as an instance 'artist' class.
+ * Adds fetched information to the DOM
  */
-function addWikipediaData() {
+function addWikipediaData(fetchResult) {
+    // return another promise so we know when the function is done adding the information to the DOM
+    return new Promise((resolve) => {
+        const artistElement = document.getElementById(this.id); // ids are generated upon element generation
+
+        // if we didn't find an extract, we instead link to a Wikipedia search
+        if (!fetchResult.foundExtract) {
+            //
+            resolve();
+            return;
+        }
+
+        resolve();
+    });
+}
+
+/**
+ * Function called with .call() for an instance of our classes, that fetches general information from wikipedia.
+ * Doesn't return anything, and will call the function to add fetched information to the DOM.
+ *
+ * We realise downloading information from another web address while the page is loading is
+ * not good for performance or SEO, but wanted to demonstrate it anyway.
+ */
+function fetchWikipediaData() {
     // we return a promise so we can check when everything is done
     // we don't need reject() since we just log it here if we run into any problems
     return new Promise((resolve) => {
@@ -105,7 +128,7 @@ function addWikipediaData() {
         const query = encodeURI(wikiSearch);
 
         // generate and store a Wikipedia search link
-        const wikipediaLink = `https://en.wikipedia.org/w/index.php?search=${query}`;
+        this.wikipediaLink = `https://en.wikipedia.org/w/index.php?search=${query}`;
         // and also a Wikipedia API call
         const dataURL = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}&origin=*&format=json`;
 
@@ -114,23 +137,53 @@ function addWikipediaData() {
             res.json().then(resData => {
 
                 // log the data we received (debugging)
-                console.log(resData);
+                // console.log(resData);
 
-                for (const key in resData.query.pages) {
-                    const element = resData.query.pages[key];
-                    console.log(element.extract);
+                // generic error logging (can't really call it handling)
+                if (!resData || !resData.query || !resData.query.pages) {
+                    console.log(!resData);
+                    console.log(!resData.query);
+                    console.log(!resData.query.pages);
+                    console.log(`Couldn't get a Wikipedia result for ${this.constructor.name} ${this.name}!`);
+                    console.log(resData);
+                    // on error, we only add wikiLink to the DOM
+                    addWikipediaData.call(this, { foundExtract: false })
+                        .then(resolve());
+                    return;
                 }
 
+                const keys = Object.keys(resData.query.pages);
+
+                // if no results were found
+                if (!keys.length || keys[0] == '-1') {
+                    console.log(`Couldn't find a Wikipedia page for ${this.constructor.name} ${this.name}!`);
+                    // on error, we only add wikiLink to the DOM
+                    addWikipediaData.call(this, { foundExtract: false })
+                        .then(resolve());
+                    return;
+                }
+
+                // get introduction of wikipedia article
+                const extract = resData.query.pages[keys[0]].extract;
+
                 // after adding the data to the DOM resolve our promise
-                resolve();
+                addWikipediaData.call(this, { foundExtract: true, info: extract })
+                    .then(resolve());
+
             }).catch(error => {
                 console.log(`Couldn't convert to JSON for ${this.constructor.name} ${this.name}!`);
-                console.error(res);
+                console.log(res);
                 console.error(error);
+                // on error, we only add wikiLink to the DOM
+                addWikipediaData.call(this, { foundExtract: false })
+                    .then(resolve());
             });
         }).catch(error => {
             console.log(`Couldn't complete fetch for ${this.constructor.name} ${this.name}! URL: ${dataURL}`);
             console.error(error);
+            // on error, we only add wikiLink to the DOM
+            addWikipediaData.call(this, { foundExtract: false })
+                .then(resolve());
         });
     });
 }
@@ -464,14 +517,14 @@ class Movie {
 
             // get wikipedia information for our actors
             this.actors.forEach(actor => {
-                // set actor as 'this' in addWikipediaData()'s function scope
-                const receivedPromise = addWikipediaData.call(actor);
+                // set actor as 'this' in fetchWikipediaData()'s function scope
+                const receivedPromise = fetchWikipediaData.call(actor);
                 wikipediaPromises.push(receivedPromise);
             });
 
             // when all Promises are resolved, the page is fully loaded and we can resolve this main promise as well
             Promise.all(wikipediaPromises)
-                .then(resolve());
+                .then(() => { resolve(); console.log(wikipediaPromises); });
         });
     }
 }
@@ -483,4 +536,4 @@ class Movie {
 
 
 // log how long it took our script to finish executing
-console.log(`Classes script executed! ${Math.round((performance.now() - startClasses) * 10) / 10}ms`);
+console.log(`Classes script executed in ${Math.round((performance.now() - startClasses) * 10) / 10}ms!`);
