@@ -119,7 +119,7 @@ const applyStyles = () => {
         break;
     }
   }
-
+  
   });
 }
 
