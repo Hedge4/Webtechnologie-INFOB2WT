@@ -6,12 +6,10 @@
     padding: 1em;
     margin: 0.5em;
     display: flex;
-    width: 90%; 
-    flex-wrap: wrap;
+    width: 90%;
+    flex-wrap: nowrap;
     justify-content: space-between;
-    margin-inline: 0.5em;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
+    align-items: center;
 }
 
 .director-box>*,
@@ -22,21 +20,51 @@
     margin-inline-end: 0;
 }
 
-.director-info h3,
-.writer-info h3,
-.actor-info h3 {
+.director__info,
+.writer__info,
+.actor__info {
+    width: 30%;
+}
+
+.artist__name {
+    margin-top: 0;
     margin-bottom: 0.2em;
 }
 
-.birth-year {
+.artist__birth-year {
     margin-top: 0;
 }
 
-.director-img,
-.writer-img,
-.actor-img {
-    max-width: 20%;
+.artist__description {
+    margin-bottom: 0;
+}
+
+.director__image {
+    max-width: 35%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.writer__image,
+.actor__image {
+    max-width: 25%;
     max-height: 80%;
     width: auto;
     height: auto;
+}
+
+.artist__movies-list {
+    width: 40%;
+}
+
+.artist__movies-list h4 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.artist__movies-list ul {
+    padding-left: 25px;
+    margin-top: 0.5em;
+    margin-bottom: 0;
 }

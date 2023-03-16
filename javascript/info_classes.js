@@ -14,7 +14,7 @@ const startClasses = performance.now();
  * @param {string[]} [options.classes] A class or classes of this element. Also accepts a single string instead of an array.
  * @param {[string, string][]} [options.attributes] A pair or pairs of attribute names and values. Also accepts a single name/value pair instead of an array of them.
  * @param {[string, *, *][]} [options.eventListeners] A pair or pairs of event types and callback functions when they're detected, and (optionally) an options object. Also accepts a single type/callback/option array instead of an array of them.
- * @param {Object[]} [options.children] Options objects to recursively generate the DOM elements of this element's children. Also accepts a single child option object instead of an array.
+ * @param {Object[], bool} [options.children] Options objects to recursively generate the DOM elements of this element's children. Also accepts a single child option object instead of an array. Set isDomElement property to true to only append.
  *
  * @returns {Object} The generated HTML DOM element.
  */
@@ -84,7 +84,8 @@ function generateDomElement(options) {
     options.children = ensureInputIsArray(options.children);
     if (options.children && options.children.length > 0) {
         options.children.forEach(child => {
-            elem.appendChild(generateDomElement(child));
+            elem.appendChild(child.isDomElement ? child : generateDomElement(child));
+            // elem.appendChild(generateDomElement(child));
         });
     }
 
@@ -100,6 +101,7 @@ function addWikipediaData(fetchResult) {
     // return another promise so we know when the function is done adding the information to the DOM
     return new Promise((resolve) => {
         const artistElement = document.getElementById(this.id); // ids are generated upon element generation
+        // const informationElement = artistElement.getElementsByClassName();
 
         // if we didn't find an extract, we instead link to a Wikipedia search
         if (!fetchResult.foundExtract) {
@@ -188,6 +190,8 @@ function fetchWikipediaData() {
     });
 }
 
+const quantiseWords = (amount, singular, plural = singular + 's') => { return amount === 1 ? singular : plural; };
+
 
 ////////////////////////////////////
 // CLASSES AND GENERATION METHODS //
@@ -214,13 +218,14 @@ class Director extends Artist {
     constructor(options) {
         super(options);
         this.moviesDirected = options.moviesDirected || []; // optional
+        this.simpleDescription = true;
     }
 
     // DOM element generation method for a Director instance
     generate() {
         // we define our movieList beforehand to reduce clutter
         const movieList = {
-            tagName: 'ol',
+            tagName: 'ul',
             children: [],
         };
 
@@ -233,43 +238,45 @@ class Director extends Artist {
         });
 
         return generateDomElement({
-            tagName: 'div',
-            eventListeners: ['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)],
+            tagName: 'section',
+            eventListeners: [['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)]],
             attributes: [['id', this.id]],
             classes: ['director-box'],
             children: [
                 {
                     tagName: 'div',
-                    classes: ['director-info'],
+                    classes: ['director__info'],
                     children: [
                         {
                             tagName: 'h3',
+                            classes: ['artist__name'],
                             text: this.name,
                         }, {
                             tagName: 'p',
-                            classes: ['birth-year'],
+                            classes: ['artist__birth-year'],
                             text: this.birthYear,
                         }, {
                             tagName: 'p',
+                            classes: ['artist__description'],
                             text: 'Couldn\'t find information.',
                         },
                     ],
                 },
                 {
-                    tagName: 'img',
-                    classes: ['director-img'],
-                    attributes: [['src', this.photoLink]],
-                },
-                {
                     tagName: 'div',
-                    classes: ['movies-list'],
+                    classes: ['artist__movies-list'],
                     children: [
                         {
                             tagName: 'h4',
-                            text: 'Other movies are...',
+                            text: 'Also directed...',
                         },
                         movieList,
                     ],
+                },
+                {
+                    tagName: 'img',
+                    classes: ['director__image'],
+                    attributes: [['src', this.photoLink]],
                 },
             ],
         });
@@ -281,13 +288,14 @@ class Writer extends Artist {
     constructor(options) {
         super(options);
         this.moviesWritten = options.moviesWritten || []; // optional
+        this.simpleDescription = true;
     }
 
     // DOM element generation method for a Writer instance
     generate() {
         // we define our movieList beforehand to reduce clutter
         const movieList = {
-            tagName: 'ol',
+            tagName: 'ul',
             children: [],
         };
 
@@ -300,36 +308,33 @@ class Writer extends Artist {
         });
 
         return generateDomElement({
-            tagName: 'div',
-            eventListeners: ['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)],
+            tagName: 'section',
+            eventListeners: [['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)]],
             attributes: [['id', this.id]],
             classes: ['writer-box'],
             children: [
                 {
                     tagName: 'div',
-                    classes: ['writer-info'],
+                    classes: ['writer__info'],
                     children: [
                         {
                             tagName: 'h3',
+                            classes: ['artist__name'],
                             text: this.name,
                         }, {
                             tagName: 'p',
-                            classes: ['birth-year'],
+                            classes: ['artist__birth-year'],
                             text: this.birthYear,
                         }, {
                             tagName: 'p',
+                            classes: ['artist__description'],
                             text: 'Couldn\'t find information.',
                         },
                     ],
                 },
                 {
-                    tagName: 'img',
-                    classes: ['writer-img'],
-                    attributes: [['src', this.photoLink]],
-                },
-                {
                     tagName: 'div',
-                    classes: ['movies-list'],
+                    classes: ['artist__movies-list'],
                     children: [
                         {
                             tagName: 'h4',
@@ -337,6 +342,11 @@ class Writer extends Artist {
                         },
                         movieList,
                     ],
+                },
+                {
+                    tagName: 'img',
+                    classes: ['writer__image'],
+                    attributes: [['src', this.photoLink]],
                 },
             ],
         });
@@ -348,16 +358,18 @@ class Actor extends Artist {
     constructor(options) {
         super(options);
         this.moviesPlayed = options.moviesPlayed || []; // optional
+        this.simpleDescription = false;
 
         // optional for Artist instances, but not for Actor instances of Artist
         if (!this.photoLink) throw (`ConstructorError: ${this.constructor.name} ${this.name} must have a link to a photo!`);
     }
 
+
     // DOM element generation method for an Actor instance
     generate() {
         // we define our movieList beforehand to reduce clutter
         const movieList = {
-            tagName: 'ol',
+            tagName: 'ul',
             children: [],
         };
 
@@ -370,40 +382,42 @@ class Actor extends Artist {
         });
 
         return generateDomElement({
-            tagName: 'div',
-            eventListeners: ['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)],
+            tagName: 'section',
+            eventListeners: [['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)]],
             attributes: [['id', [this.id]]],
             classes: ['actor-box'],
             children: [
                 {
+                    tagName: 'img',
+                    classes: ['actor__image'],
+                    attributes: [['src', this.photoLink]],
+                },
+                {
                     tagName: 'div',
-                    classes: ['actor-info'],
+                    classes: ['actor__info'],
                     children: [
                         {
                             tagName: 'h3',
+                            classes: ['artist__name'],
                             text: this.name,
                         }, {
                             tagName: 'p',
-                            classes: ['birth-year'],
+                            classes: ['artist__birth-year'],
                             text: this.birthYear,
                         }, {
                             tagName: 'p',
+                            classes: ['artist__description'],
                             text: 'Couldn\'t find information.',
                         },
                     ],
                 },
                 {
-                    tagName: 'img',
-                    classes: ['actor-img'],
-                    attributes: [['src', this.photoLink]],
-                },
-                {
                     tagName: 'div',
-                    classes: ['actor-movies'],
+                    classes: ['artist__movies-list'],
                     children: [
                         {
                             tagName: 'h4',
-                            text: 'Starred in...',
+                            text: 'Also appeared in...',
                         },
                         movieList,
                     ],
@@ -439,21 +453,13 @@ class Movie {
         const generatedElements = [];
 
         // page title
-        generatedElements.push(generateDomElement({ tagName: 'h1', text: this.movieTitle }));
+        generatedElements.push(generateDomElement({ tagName: 'h1', text: 'General information' }));
 
-        // general info box
-        generatedElements.push(generateDomElement({
-            tagName: 'div',
-            attributes: [['id', 'movie-info']],
-            children: [
-                { tagName: 'p' },
-            ],
-        }));
-
-        // use the actorInfoList to get a list of Actors. The constructor can throw an error, but since our
-        // information doesn't change dynamically this is only for development and we don't bother catching it.
+        // use the list of Directors to generate each element and append them all to one div
         const directorsDiv = document.createElement('div');
         directorsDiv.id = 'directors-box';
+        // if isDomElement() is true, createDomElement() will just append and not try to generate an element from it
+        directorsDiv.isDomElement = true;
         this.directors.forEach(director => {
             try {
                 // generate the html element node for each Actor
@@ -463,15 +469,12 @@ class Movie {
                 console.error(error);
             }
         });
-        // append our generated actor elements to the DOM
-        generatedElements.push(directorsDiv);
 
-        generatedElements.push(generateDomElement({ tagName: 'h2', text: 'Test!' }));
-
-        // use the actorInfoList to get a list of Actors. The constructor can throw an error, but since our
-        // information doesn't change dynamically this is only for development and we don't bother catching it.
+        // use the list of Writers to generate each element and append them all to one div
         const writersDiv = document.createElement('div');
         writersDiv.id = 'writers-box';
+        // if isDomElement() is true, createDomElement() will just append and not try to generate an element from it
+        writersDiv.isDomElement = true;
         this.writers.forEach(writer => {
             try {
                 // generate the html element node for each Actor
@@ -481,13 +484,30 @@ class Movie {
                 console.error(error);
             }
         });
-        // append our generated actor elements to the DOM
-        generatedElements.push(writersDiv);
+
+        // general movie info article (including director(s) and writer(s))
+        generatedElements.push(generateDomElement({
+            tagName: 'article',
+            children: [
+                {
+                    // general info box
+                    tagName: 'section',
+                    attributes: [['id', 'movie-info']],
+                    children: [
+                        { tagName: 'p' },
+                    ],
+                },
+                { tagName: 'h2', text: quantiseWords(directorsDiv.children.length, 'Director') },
+                directorsDiv,
+                { tagName: 'h2', text: quantiseWords(writersDiv.children.length, 'Writer') },
+                writersDiv,
+            ],
+        }));
 
         // use the actorInfoList to get a list of Actors. The constructor can throw an error, but since our
         // information doesn't change dynamically this is only for development and we don't bother catching it.
         const actorsDiv = document.createElement('div');
-        actorsDiv.id = 'actors-box';
+        // actorsDiv.id = 'actors-box';
         this.actors.forEach(actor => {
             try {
                 // generate the html element node for each Actor
