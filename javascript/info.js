@@ -6,22 +6,22 @@ let startInfo = performance.now();
 //////////////////////////////////
 
 const actorInfoList = [
-    { name: 'Jim Carrey', birthYear: 'January 17 1962', moviesPlayed: ['The Mask', 'Ace Ventura: When Nature calls', 'Yes Man', 'Liar Liar'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\jim_Carrey.jpg' },
-    { name: 'Laura Linney', birthYear: 'February 5 1964', moviesPlayed: ['Blind Spot', 'Love Actually', 'Nocturnal Animals', 'Mystic River'], wikiArticle: 'wiki/Laura_Linney', photoLink: 'img\\laura_linney.jpg' },
-    { name: 'Noah Emmerich', birthYear: 'February 27 1965', moviesPlayed: ['Last Action Hero', 'Life', 'Super 8', 'Jane Got A Gun'], wikiArticle: 'wiki/Noah_Emmerich', photoLink: 'img\\noah_emmerich.jpg' },
-    { name: 'Holland Taylor', birthYear: 'Jannuary 14 1943', moviesPlayed: ['Fame', 'To Die For', 'Legally Blond', 'The Wedding Date'], wikiArticle: 'wiki/Holland_Taylor', photoLink: 'img\\holland_taylor.jpg' },
-    { name: 'Ed Harris', birthYear: 'November 28 1950', moviesPlayed: ['Alamo Bay', 'The Rock', 'Snowpiercer', 'Top Gun: Maverick'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\ed_harris.jpg' },
-    { name: 'Natascha McElhone', birthYear: 'December 14 1971', moviesPlayed: ['The Devils Own', 'Killing me Softly', 'Carmen', 'London Town'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\natascha_mcelhone.jpg' },
-    { name: 'Brian Delate', birthYear: 'April 8 1949', moviesPlayed: ['Jacknife', 'The Shawshank Redemption', 'The Brave One', 'The Orphan Killer'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\brian_delate.jpg' },
-    { name: 'Paul Giamatti', birthYear: 'June 6 1967', moviesPlayed: ['Man on the Moon', 'Win Win', 'The Amazing Spider-Man 2', 'Love & Mercy', 'San Andreas'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\paul_giammati.jpg' },
+    { name: 'Jim Carrey', birthYear: 'January 17 1962', moviesPlayed: ['The Mask', 'Ace Ventura', 'Yes Man', 'Liar Liar'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\cast\\jim_carrey.jpg' },
+    { name: 'Laura Linney', birthYear: 'February 5 1964', moviesPlayed: ['Blind Spot', 'Love Actually', 'Nocturnal Animals', 'Mystic River'], wikiArticle: 'wiki/Laura_Linney', photoLink: 'img\\cast\\laura_linney.jpg' },
+    { name: 'Noah Emmerich', birthYear: 'February 27 1965', moviesPlayed: ['Last Action Hero', 'Life', 'Super 8', 'Jane Got A Gun'], wikiArticle: 'wiki/Noah_Emmerich', photoLink: 'img\\cast\\noah_emmerich.jpg' },
+    { name: 'Holland Taylor', birthYear: 'Jannuary 14 1943', moviesPlayed: ['Fame', 'To Die For', 'Legally Blond', 'The Wedding Date'], wikiArticle: 'wiki/Holland_Taylor', photoLink: 'img\\cast\\holland_taylor.jpg' },
+    { name: 'Ed Harris', birthYear: 'November 28 1950', moviesPlayed: ['Alamo Bay', 'The Rock', 'Snowpiercer', 'Top Gun: Maverick'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\cast\\ed_harris.jpg' },
+    { name: 'Natascha McElhone', birthYear: 'December 14 1971', moviesPlayed: ['The Devils Own', 'Killing me Softly', 'Carmen', 'London Town'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\cast\\natascha_mcelhone.jpg' },
+    { name: 'Brian Delate', birthYear: 'April 8 1949', moviesPlayed: ['Jacknife', 'The Shawshank Redemption', 'The Brave One', 'The Orphan Killer'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\cast\\brian_delate.jpg' },
+    { name: 'Paul Giamatti', birthYear: 'June 6 1967', moviesPlayed: ['Man on the Moon', 'Win Win', 'The Amazing Spider-Man 2', 'Love & Mercy', 'San Andreas'], wikiArticle: 'wiki/Jim_Carrey', photoLink: 'img\\cast\\paul_giammati.jpg' },
 ];
 
 const writerInfoList = [
-    { name: 'Andrew Niccol', wikiArticle: 'wiki/Andrew_Niccol', birthYear: 'June 10 1964', moviesWritten: ['Gattica', 'Simone', 'in Time'], photoLink: 'img\\andrew_niccol.jpg' },
+    { name: 'Andrew Niccol', wikiArticle: 'wiki/Andrew_Niccol', birthYear: 'June 10 1964', moviesWritten: ['Gattica', 'Simone', 'in Time'], photoLink: 'img\\cast\\andrew_niccol.jpg' },
 ];
 
 const directorInfoList = [
-    { name: 'Peter Weir', wikiArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesDirected: ['Dead Poets Society', 'The Last Wave', 'The Way Back '], photoLink: 'img\\peter_weir.jpg' },
+    { name: 'Peter Weir', wikiArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesDirected: ['Dead Poets Society', 'The Last Wave', 'The Way Back '], photoLink: 'img\\cast\\peter_weir.jpg' },
 ];
 
 const movieInfo = {

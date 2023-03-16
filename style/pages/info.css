@@ -31,3 +31,10 @@
 .actor-img {
     width: 25%;
 }
+
+.img {
+    max-width: 25%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+  }

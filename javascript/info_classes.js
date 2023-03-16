@@ -342,7 +342,7 @@ class Actor extends Artist {
                 {
                     tagName: 'img',
                     classes: ['actor-img'],
-                    attributes: [['src', 'https://images.freeimages.com/images/previews/54c/random-photography-3-1143357.jpg']],
+                    attributes: [['src', this.photoLink]],
                 },
                 {
                     tagName: 'div',
