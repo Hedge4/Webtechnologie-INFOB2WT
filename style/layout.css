@@ -2,14 +2,6 @@ body {
   background: black;
 }
 
-article {
-  width: 80%;
-}
-
-section {
-  margin-top: 30px;
-}
-
 #site_box {
   width: 100%;
 }
@@ -106,8 +98,9 @@ section {
   flex-grow: 1;
 }
 
-.page_title {
+.page-title {
   padding-left: 0.5em;
+  font-size: 2em;
 }
 
 #sidebar {
@@ -187,18 +180,24 @@ ul li a.footer-link--selected {
 .style-menu__selector {
   background-color: silver;
   border: black;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: fit-content;
   margin: auto;
   padding: 2px;
   min-width: 7.2em;
   margin-right: 0;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .style-menu__option-button {
   cursor: pointer;
   display: flex;
+  border: 1px solid white;
+  padding-right: 0.5em;
+  border-radius: 5px;
+  margin-left: 0.4em;
+  margin-top: 0.5em;
 }
 
 .style-menu__arrow {
@@ -235,6 +234,8 @@ ul li a.footer-link--selected {
 
 .style-menu__value-list ul {
   display: block;
+  margin-bottom: 0.5em;
+  margin-top: 0.2em;
 }
 
 .style-menu__value-list--active {
@@ -264,15 +265,18 @@ ul li a.footer-link--selected {
   width: 30%;
 }
 
-.style-menu__button-wrapper{
+.style-menu__button-wrapper {
   display: flex;
   flex-direction: column;
   margin: auto;
+  margin-left: 0.5em;
 }
 
 .style-menu__button-wrapper button {
   margin: 5px;
   cursor: pointer;
+  padding: 0.3em 0.6em;
+  border-radius: 6px;
 }
 
 .style-menu__button {
@@ -298,6 +302,3 @@ ul li a.footer-link--selected {
 ::-webkit-scrollbar-thumb:hover {
   background: #0006b3;
 }
-
-
-

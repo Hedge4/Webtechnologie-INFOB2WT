@@ -3,6 +3,15 @@ body {
   margin: 0;
 }
 
+article {
+  /* width: 80%; */
+  margin-bottom: 0.5em;
+}
+
+section {
+  margin-top: 1.5em;
+}
+
 h1 {
   padding-bottom: 0.1em;
   border-bottom: 1px solid grey;
@@ -11,6 +20,7 @@ h1 {
 
 h2 {
   padding-left: 0.5em;
+  margin-block: 0.6em;
 }
 
 a,

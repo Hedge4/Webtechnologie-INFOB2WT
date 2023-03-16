@@ -26,6 +26,7 @@
 <body>
   <div id="background"></div>
   <div id="site_box">
+
     <header id="header">
       <div id="menubar">
         <ul id="menu">
@@ -41,21 +42,22 @@
         <h1>The Truman Show</h1>
       </div>
     </header>
+
     <div id="site_content">
       <article id="content">
-        <h2 class="page_title">Synopsis</h1>
-        
-        "The Truman Show" is a thought-provoking science-fiction film released in 1998. The movie explores the idea
-        of an individual's life being broadcasted and controlled as a television show.
-        The story follows Truman Burbank, a man who has unknowingly lived his entire life in a simulated reality TV
-        show.
-        
 
-        <div class="poster">
-          <img src="./img/truman_poster_index.jpg" class="poster" alt="The movie poster for the film" />
-        </div>
+        <h1 class="page-title">Synopsis</h1>
+        <section>
+          "The Truman Show" is a thought-provoking science-fiction film released in 1998. The movie explores the idea
+          of an individual's life being broadcasted and controlled as a television show.
+          The story follows Truman Burbank, a man who has unknowingly lived his entire life in a simulated reality TV
+          show.
+          <div class="poster">
+            <img src="./img/truman_poster_index.jpg" class="poster" alt="The movie poster for the film" />
+          </div>
+        </section>
 
-        <section class="poster">
+        <section>
           Truman's life is a meticulously crafted illusion, with every detail carefully choreographed by a team of
           actors and producers.
           His hometown, Seahaven Island, is actually a giant television studio, and every single person Truman interacts
@@ -64,7 +66,6 @@
           the show and begin a new life outside of the artificial world that has been created for him.
         </section>
 
-        
         <section>
           Truman's world is carefully controlled by the show's creator and executive producer, Christof, who has been
           manipulating his life since before he was born.
@@ -112,12 +113,13 @@
           the science-fiction genre.
         </section>
       </article>
+
       <aside id="sidebar">
         <h2>Sidebar</h2>
         <h4>We have a sidebar</h4>
         <p>
           ...because it looks fancy!<br>
-         <br>
+          <br>
           We will use it in the future.
         </p>
         <h2>References</h2>
@@ -128,8 +130,8 @@
           <li><a href="https://en.wikipedia.org/wiki/The_Truman_Show">The Truman Show - Wikipedia</a></li>
           <li><a href="https://www.rottentomatoes.com/m/truman_show">RottenTomatoes - The Truman Show</a></li>
         </ul>
-      </div>
-    </aside>
+      </aside>
+    </div>
 
     <footer>
       <div id="footer__wrapper">
@@ -195,53 +197,51 @@
 
         <div class="style-menu">
           <h1>Change up the appearance!</h2>
-          <div class="style-menu__wrapper">
-            <label for="element-selector" class="style-menu__label">Select Element</label>
-            <select id="element-selector" class="style-menu__selector">
-              <option value="default">...</option>
-              <option value="body">Body</option>
-              <option value="header">Header</option>
-              <option value="article">Article</option>
-              <option value="section">Section</option>
-              <option value="footer">Footer</option>
-              <option value="aside">Aside</option>
-            </select>
-          </div>
-          
-          <div class="style-menu__wrapper">
-            <label for="attribute-selector" class="style-menu__label">Select Attribute</label>
-            <select id="attribute-selector" class="style-menu__selector">
-              <option value="default">...</option>
-              <option value="color">Text Color</option>
-              <option value="font-family">Font</option>
-              <option value="font-size">Font Size</option>
-              <option value="background-color">Color</option>
-            </select>
-          </div>
-          
-          <div class="style-menu__wrapper">
-            <div id="option-button" class="style-menu__option-button">
-              <span class="style-menu__label">Options</span>
-              <div id="style-menu__arrow" class="style-menu__arrow"></div>
+            <div class="style-menu__wrapper">
+              <label for="element-selector" class="style-menu__label">Select Element</label>
+              <select id="element-selector" class="style-menu__selector">
+                <option value="default">...</option>
+                <option value="body">Body</option>
+                <option value="header">Header</option>
+                <option value="article">Article</option>
+                <option value="section">Section</option>
+                <option value="footer">Footer</option>
+                <option value="aside">Aside</option>
+              </select>
             </div>
-            <span id="style-menu-warning" class="style-menu__warning"></span>
-          </div>
-          <div id="options-wrapper" class="style-menu__value-list">
-            <ul id="options-list">
-              <li class="style-menu__value">Red</li>
-              <li class="style-menu__value">Blue</li>
-              <li class="style-menu__value">Green</li>
-              <li class="style-menu__value">Yellow</li>
-            </ul>
-  
-            <div class="style-menu__button-wrapper">
-              <button id="reset-button">Reset</button>
-              <button id="apply-button">Apply</button>
-            </div>
-          </div>
-      </div>
 
-      
+            <div class="style-menu__wrapper">
+              <label for="attribute-selector" class="style-menu__label">Select Attribute</label>
+              <select id="attribute-selector" class="style-menu__selector">
+                <option value="default">...</option>
+                <option value="color">Text Color</option>
+                <option value="font-family">Font</option>
+                <option value="font-size">Font Size</option>
+                <option value="background-color">Color</option>
+              </select>
+            </div>
+
+            <div class="style-menu__wrapper">
+              <div id="option-button" class="style-menu__option-button">
+                <span class="style-menu__label">Options</span>
+                <div id="style-menu__arrow" class="style-menu__arrow"></div>
+              </div>
+              <span id="style-menu-warning" class="style-menu__warning"></span>
+            </div>
+            <div id="options-wrapper" class="style-menu__value-list">
+              <ul id="options-list">
+                <li class="style-menu__value">Red</li>
+                <li class="style-menu__value">Blue</li>
+                <li class="style-menu__value">Green</li>
+                <li class="style-menu__value">Yellow</li>
+              </ul>
+
+              <div class="style-menu__button-wrapper">
+                <button id="reset-button">Reset</button>
+                <button id="apply-button">Apply</button>
+              </div>
+            </div>
+        </div>
 
     </footer>
   </div>

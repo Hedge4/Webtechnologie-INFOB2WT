@@ -1,5 +1,10 @@
+.director-article section {
+    margin-top: 1em;
+}
+
 #cast>h1 {
     margin-top: 1em;
+    font-size: 2em;
 }
 
 #cast>h2 {
@@ -32,5 +37,6 @@
 }
 
 .cast-member__text h2 {
+    margin-top: 0;
     padding: 0;
 }
