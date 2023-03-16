@@ -17,22 +17,22 @@ const actorInfoList = [
 ];
 
 const writerInfoList = [
-    { name: 'Andrew Niccol', wikiArticle: 'wiki/Andrew_Niccol', birthYear: 'June 10 1964', moviesWritten: ['Gattica', 'Simone', 'in Time'], photoLink: 'img\\andrew_niccol.jpg'},
+    { name: 'Andrew Niccol', wikiArticle: 'wiki/Andrew_Niccol', birthYear: 'June 10 1964', moviesWritten: ['Gattica', 'Simone', 'in Time'], photoLink: 'img\\andrew_niccol.jpg' },
 ];
 
 const directorInfoList = [
-    { name: 'Peter Weir', wikiArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesWritten: ['Dead Poets Society', 'The Last Wave', 'The Way Back '], photoLink: 'img\\peter_weir.jpg' },
+    { name: 'Peter Weir', wikiArticle: 'wiki/Peter_Weir', birthYear: 'August 21 1944', moviesDirected: ['Dead Poets Society', 'The Last Wave', 'The Way Back '], photoLink: 'img\\peter_weir.jpg' },
 ];
 
-
 const movieInfo = {
-    title: 'The Truman Show',
-    genre: 'satirical, social science-fiction, comedy, drama',
-    releaseYear: '1998',
-    poster: 'img\\the-truman-show-movie-poster-md.jpg',
-    trailer: 'https://www.youtube.com/watch?v=LfXTASYB14M&ab_channel=HDRetroTrailers',
-    plot: '"The Truman Show" is a satirical drama film released in 1998, directed by Peter Weir and starring Jim Carrey as Truman Burbank. The film is about a man named Truman who lives in a seemingly idyllic town called Seahaven, which is actually a giant, elaborately designed set filled with actors portraying his friends and family, and even his wife Meryl.',
+    movieTitle: 'The Truman Show',
+    movieGenre: ['satirical', 'social science-fiction', 'comedy', 'drama'],
+    movieRelease: '1998',
+    moviePosterLink: 'img\\the-truman-show-movie-poster-md.jpg',
+    movieTrailerLink: 'https://www.youtube.com/watch?v=LfXTASYB14M',
+    moviePlotSummary: '"The Truman Show" is a satirical drama film released in 1998, directed by Peter Weir and starring Jim Carrey as Truman Burbank. The film is about a man named Truman who lives in a seemingly idyllic town called Seahaven, which is actually a giant, elaborately designed set filled with actors portraying his friends and family, and even his wife Meryl.',
 };
+
 
 //////////////////////////////////
 //  CLASS INSTANCES GENERATION  //
@@ -51,7 +51,7 @@ const writers = [];
 for (let i = 0; i < writerInfoList.length; i++) {
     const writerInfo = writerInfoList[i];
     writerInfo.id = `writer-${i}`;
-    writers.push(new Actor(writerInfo));
+    writers.push(new Writer(writerInfo));
 }
 
 // create an array of Director instances from tempDirectorInfoList
@@ -62,14 +62,23 @@ for (let i = 0; i < directorInfoList.length; i++) {
     directors.push(new Director(directorInfo));
 }
 
-// create our movie instance
-const movie = new Movie({
+console.log(movieInfo);
+console.log({
+    ...movieInfo,
     actors: actors,
     writers: writers,
     directors: directors,
 });
 
-// log our finished Movie instance
+// create our movie instance
+const movie = new Movie({
+    ...movieInfo,
+    actors: actors,
+    writers: writers,
+    directors: directors,
+});
+
+// log our finished Movie instance because we're proud of it
 console.log(movie);
 
 
@@ -94,5 +103,5 @@ startInfo = performance.now();
 
 // use our movie Class's addExtraInfo() method to try to add information from wikipedia to the DOM
 movie.addExtraInfo()
-    // log how long it took our script to finish executing completely
+    // log how long it took our script to finish executing completely when the promise resolves
     .then(console.log(`Extra info from Wikipedia loaded! ${Math.round((performance.now() - startInfo) * 10) / 10}ms`));

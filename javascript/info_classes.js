@@ -146,11 +146,13 @@ class Artist {
         this.id = options.id;
         this.name = options.name;
         this.birthYear = options.birthYear;
+        this.photoLink = options.photoLink || ''; // optional
         this.wikiArticle = options.wikiArticle || undefined; // optional
 
         if (!this.id) throw (`ConstructorError: ${this.constructor.name} must have an id!`);
         if (!this.name) throw (`ConstructorError: ${this.constructor.name} must have a name!`);
         if (!this.birthYear) throw (`ConstructorError: ${this.constructor.name} must have a year of birth!`);
+
     }
 }
 
@@ -160,15 +162,8 @@ class Director extends Artist {
         super(options);
         this.moviesDirected = options.moviesDirected || []; // optional
     }
-}
 
-// eslint-disable-next-line
-class Writer extends Artist {
-    constructor(options) {
-        super(options);
-        this.booksWritten = options.booksWritten || []; // optional
-    }
-
+    // DOM element generation method for a Director instance
     generate() {
         // we define our movieList beforehand to reduce clutter
         const movieList = {
@@ -187,12 +182,12 @@ class Writer extends Artist {
         return generateDomElement({
             tagName: 'div',
             eventListeners: ['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)],
-            attributes: [['id', [this.id]]],
-            classes: ['actor-box'],
+            attributes: [['id', this.id]],
+            classes: ['director-box'],
             children: [
                 {
                     tagName: 'div',
-                    classes: ['actor-info'],
+                    classes: ['director-info'],
                     children: [
                         {
                             tagName: 'h3',
@@ -209,16 +204,83 @@ class Writer extends Artist {
                 },
                 {
                     tagName: 'img',
-                    classes: ['actor-img'],
-                    attributes: [['src', 'https://images.freeimages.com/images/previews/54c/random-photography-3-1143357.jpg']],
+                    classes: ['director-img'],
+                    attributes: [['src', this.photoLink]],
                 },
                 {
                     tagName: 'div',
-                    classes: ['actor-movies'],
+                    classes: ['movies-list'],
                     children: [
                         {
                             tagName: 'h4',
-                            text: 'Starred in:',
+                            text: 'Other movies are...',
+                        },
+                        movieList,
+                    ],
+                },
+            ],
+        });
+    }
+}
+
+// eslint-disable-next-line
+class Writer extends Artist {
+    constructor(options) {
+        super(options);
+        this.moviesWritten = options.moviesWritten || []; // optional
+    }
+
+    // DOM element generation method for a Writer instance
+    generate() {
+        // we define our movieList beforehand to reduce clutter
+        const movieList = {
+            tagName: 'ol',
+            children: [],
+        };
+
+        // add a list element for each movie
+        this.moviesWritten.forEach(movieTitle => {
+            movieList.children.push({
+                tagName: 'li',
+                text: movieTitle,
+            });
+        });
+
+        return generateDomElement({
+            tagName: 'div',
+            eventListeners: ['click', () => alert(`${this.constructor.name} ${this.name} was clicked!`)],
+            attributes: [['id', this.id]],
+            classes: ['writer-box'],
+            children: [
+                {
+                    tagName: 'div',
+                    classes: ['writer-info'],
+                    children: [
+                        {
+                            tagName: 'h3',
+                            text: this.name,
+                        }, {
+                            tagName: 'p',
+                            classes: ['birth-year'],
+                            text: this.birthYear,
+                        }, {
+                            tagName: 'p',
+                            text: 'Couldn\'t find information.',
+                        },
+                    ],
+                },
+                {
+                    tagName: 'img',
+                    classes: ['writer-img'],
+                    attributes: [['src', this.photoLink]],
+                },
+                {
+                    tagName: 'div',
+                    classes: ['movies-list'],
+                    children: [
+                        {
+                            tagName: 'h4',
+                            text: 'Also wrote for...',
                         },
                         movieList,
                     ],
@@ -233,11 +295,12 @@ class Actor extends Artist {
     constructor(options) {
         super(options);
         this.moviesPlayed = options.moviesPlayed || []; // optional
-        this.photoLink = options.photoLink;
 
-        // if (!this.photoLink) throw (`ConstructorError: ${this.constructor.name} must have a link to a photo!`); // TODO
+        // optional for Artist instances, but not for Actor instances of Artist
+        if (!this.photoLink) throw (`ConstructorError: ${this.constructor.name} ${this.name} must have a link to a photo!`);
     }
 
+    // DOM element generation method for an Actor instance
     generate() {
         // we define our movieList beforehand to reduce clutter
         const movieList = {
@@ -287,7 +350,7 @@ class Actor extends Artist {
                     children: [
                         {
                             tagName: 'h4',
-                            text: 'Starred in:',
+                            text: 'Starred in...',
                         },
                         movieList,
                     ],
@@ -300,7 +363,13 @@ class Actor extends Artist {
 // eslint-disable-next-line
 class Movie {
     constructor(options) {
-        // this.title = options.title;
+        this.movieTitle = options.movieTitle;
+        this.movieGenre = options.movieGenre;
+        this.movieRelease = options.movieRelease;
+        this.moviePosterLink = options.moviePosterLink;
+        this.movieTrailerLink = options.movieTrailerLink;
+        this.moviePlotSummary = options.moviePlotSummary;
+
         this.actors = options.actors;
         this.writers = options.writers;
         this.directors = options.directors;
@@ -315,6 +384,52 @@ class Movie {
         // generate an DOM elements describing the movie with the year, title, genre, wikipedia information, etc.
         // also execute the generator() methods of all other class instances, and add those to given DOM element
         const generatedElements = [];
+
+        // page title
+        generatedElements.push(generateDomElement({ tagName: 'h1', text: this.movieTitle }));
+
+        // general info box
+        generatedElements.push(generateDomElement({
+            tagName: 'div',
+            attributes: [['id', 'movie-info']],
+            children: [
+                { tagName: 'p' },
+            ],
+        }));
+
+        // use the actorInfoList to get a list of Actors. The constructor can throw an error, but since our
+        // information doesn't change dynamically this is only for development and we don't bother catching it.
+        const directorsDiv = document.createElement('div');
+        directorsDiv.id = 'directors-box';
+        this.directors.forEach(director => {
+            try {
+                // generate the html element node for each Actor
+                directorsDiv.appendChild(director.generate());
+            } catch (error) {
+                // catch any errors so the page still loads, and log them for debugging
+                console.error(error);
+            }
+        });
+        // append our generated actor elements to the DOM
+        generatedElements.push(directorsDiv);
+
+        generatedElements.push(generateDomElement({ tagName: 'h2', text: 'Test!' }));
+
+        // use the actorInfoList to get a list of Actors. The constructor can throw an error, but since our
+        // information doesn't change dynamically this is only for development and we don't bother catching it.
+        const writersDiv = document.createElement('div');
+        writersDiv.id = 'writers-box';
+        this.writers.forEach(writer => {
+            try {
+                // generate the html element node for each Actor
+                writersDiv.appendChild(writer.generate());
+            } catch (error) {
+                // catch any errors so the page still loads, and log them for debugging
+                console.error(error);
+            }
+        });
+        // append our generated actor elements to the DOM
+        generatedElements.push(writersDiv);
 
         // use the actorInfoList to get a list of Actors. The constructor can throw an error, but since our
         // information doesn't change dynamically this is only for development and we don't bother catching it.
@@ -349,7 +464,7 @@ class Movie {
 
             // get wikipedia information for our actors
             this.actors.forEach(actor => {
-                wikipediaPromises.push(addWikipediaData().bind(actor));
+                wikipediaPromises.push(addWikipediaData().bind(actor)());
             });
 
             // when all Promises are resolved, the page is fully loaded and we can resolve this main promise as well

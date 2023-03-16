@@ -1,3 +1,5 @@
+.director-box,
+.writer-box,
 .actor-box {
     border: 3px double blue;
     border-radius: 10px;
@@ -8,10 +10,14 @@
     justify-content: space-between;
 }
 
+.director-box>*,
+.writer-box>*,
 .actor-box>* {
     margin-inline: 0.5em;
 }
 
+.director-info h3,
+.writer-info h3,
 .actor-info h3 {
     margin-bottom: 0.2em;
 }
@@ -20,6 +26,8 @@
     margin-top: 0;
 }
 
+.director-img,
+.writer-img,
 .actor-img {
     width: 25%;
 }
