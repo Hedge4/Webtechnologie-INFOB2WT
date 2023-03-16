@@ -303,14 +303,14 @@ class Director extends Artist {
                     classes: ['director__image'],
                     attributes: [['src', this.photoLink]],
                     eventListeners: [['mouseover', (event) => {
-                        const toolTip = document.getElementById(this.id).getElementsByClassName("artist__tooltip")[0];
-                        toolTip.setAttribute("style", `left: ${event.clientX}px`);
-                    }]]
+                        const toolTip = document.getElementById(this.id).getElementsByClassName('artist__tooltip')[0];
+                        toolTip.setAttribute('style', `left: ${event.clientX}px`);
+                    }]],
                 },
                 {
                     tagName: 'div',
                     classes: ['artist__tooltip'],
-                    text: `${this.name} also directed these movies: ${this.moviesDirected.join(', ')}.`
+                    text: `${this.name} also directed these movies: ${this.moviesDirected.join(', ')}.`,
                 },
             ],
         });
@@ -388,15 +388,15 @@ class Writer extends Artist {
                     classes: ['writer__image'],
                     attributes: [['src', this.photoLink]],
                     eventListeners: [['mouseover', (event) => {
-                        const toolTip = document.getElementById(this.id).getElementsByClassName("artist__tooltip")[0];
-                        toolTip.setAttribute("style", `bottom: ${event.clientY}px`);
-                        toolTip.setAttribute("style", `left: ${event.clientX}px`);
-                    }]]
+                        const toolTip = document.getElementById(this.id).getElementsByClassName('artist__tooltip')[0];
+                        toolTip.setAttribute('style', `bottom: ${event.clientY}px`);
+                        toolTip.setAttribute('style', `left: ${event.clientX}px`);
+                    }]],
                 },
                 {
                     tagName: 'div',
                     classes: ['artist__tooltip'],
-                    text: `${this.name} also wrote for these movies: ${this.moviesWritten.join(', ')}.`
+                    text: `${this.name} also wrote for these movies: ${this.moviesWritten.join(', ')}.`,
                 },
             ],
         });
@@ -442,15 +442,15 @@ class Actor extends Artist {
                     classes: ['actor__image'],
                     attributes: [['src', this.photoLink]],
                     eventListeners: [['mouseover', (event) => {
-                        const toolTip = document.getElementById(this.id).getElementsByClassName("artist__tooltip")[0];
-                        toolTip.setAttribute("style", `bottom: ${event.clientY}px`);
-                        toolTip.setAttribute("style", `left: ${event.clientX}px`);
-                    }]]
+                        const toolTip = document.getElementById(this.id).getElementsByClassName('artist__tooltip')[0];
+                        toolTip.setAttribute('style', `bottom: ${event.clientY}px`);
+                        toolTip.setAttribute('style', `left: ${event.clientX}px`);
+                    }]],
                 },
                 {
                     tagName: 'div',
                     classes: ['artist__tooltip'],
-                    text: `${this.name} also played in these movies: ${this.moviesPlayed.join(', ')}.`
+                    text: `${this.name} also played in these movies: ${this.moviesPlayed.join(', ')}.`,
                 },
                 {
                     tagName: 'div',
