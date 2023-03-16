@@ -304,7 +304,6 @@ class Director extends Artist {
                     attributes: [['src', this.photoLink]],
                     eventListeners: [['mouseover', (event) => {
                         const toolTip = document.getElementById(this.id).getElementsByClassName("artist__tooltip")[0];
-                        toolTip.setAttribute("style", `bottom: ${event.clientY}px`);
                         toolTip.setAttribute("style", `left: ${event.clientX}px`);
                     }]]
                 },
