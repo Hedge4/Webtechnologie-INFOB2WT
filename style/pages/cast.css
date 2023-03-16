@@ -63,3 +63,21 @@
         display: none;
     }
 }
+
+@keyframes Animation{
+    0% {
+    }
+    10% {
+        transform:  scale(1.5);
+    }
+    16% {
+    }
+    22% {
+    }
+    100% {
+    }
+}
+
+.cast-member__img{
+    animation: Animation 1s linear 0s 1 normal none;
+}
